@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.half {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  cursor: pointer;
+}
+
+.left {
+  background: url('../Images/citizen.webp') no-repeat center center/cover;
+}
+
+.right {
+  background: url('../Images/agency.jpeg') no-repeat center center/cover;
+}
+
+.content {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1.5rem;
+}
+
+.content:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+  transition: all 0.3s ease;
+}
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 150px;
+  background-color: #ffffff;
+  margin-left: 40px;
+  margin-right: 40px;
+  border-bottom: 2px solid black;
+}
+.logo {
+  align-self: center;
+}
+.logo > img {
+  width: 170px;
+  height: 170px;
+  margin: 30%;
+}
+.nav-buttons {
+  align-self: center;
+}
+.nav-buttons > button {
+  color: gray;
+  background-color: transparent;
+  border: none;
+  margin-left: 30px;
+  font-size: 20px;
+  transition: color 0.15s;
+  cursor: pointer;
+  transition: 0.15s;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+.nav-buttons > button:hover {
+  color: lightblue;
+  text-decoration: underline;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
