@@ -54,7 +54,7 @@ signUp.addEventListener('click', event => {
         lastName: lastName,
       };
       showMessage('Account Created Successfully', 'signUpMessage');
-      const docRef = doc(db, 'users', user.uid);
+      const docRef = doc(db, 'userLogin', user.uid);
       setDoc(docRef, userData)
         .then(() => {
           // Change this to show the Sign In form instead of redirecting to another page
@@ -90,7 +90,7 @@ signIn.addEventListener('click', event => {
       // Store the user ID in localStorage for session persistence
       localStorage.setItem('loggedInUserId', user.uid);
       // Redirect to homepage.html
-      window.location.href = 'index.html';
+      window.location.href = '../index.html';
     })
     .catch(error => {
       const errorCode = error.code;
