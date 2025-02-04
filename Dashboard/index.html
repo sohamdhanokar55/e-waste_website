@@ -1,134 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet"  href="globals.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
     <link rel="stylesheet" href="style.css" />
-
-    <title>Dashboard</title>
   </head>
-  <header>
-    <div class="nav-bar">
-      <div class="logo">
-        <img src="../Images/logo.jpg" alt="logo" class="logo" />
-      </div>
-      <div class="nav-buttons">
-        <button>Home</button>
-        <button><a href="index.html">Dashboard</a></button>
-        <button>Events</button>
-        <button>Marketplace</button>
-        <button>Help&Support</button>
-        <button>FAQs</button>
-      </div>
-    </div>
-  </header>
   <body>
-    <div class="profile-setting">
-      <div class="div">
-        <img class="rectangle" src="" />
-        <div class="group">
-          <img class="vuesax-linear" src="" />
-        </div>dddd  
-        <div class="group-wrapper">
-          <div class="group-2">
-            <div class="text-wrapper" id="name">Welcome, </div>
-            <div class="text-wrapper-2" id="date">Tue, 07 June 2022</div>
+    <header>
+      <div class="nav-bar">
+        <div class="logo">
+          <img src="../Images/logo.jpg" alt="logo" class="logo" />
+        </div>
+        <div class="nav-buttons">
+          <button>Home</button>
+          <button>Agency</button>
+          <button>Events</button>
+          <button>News</button>
+          <button>Marketplace</button>
+          <button>Community</button>
+          <button>FAQs</button>
+        </div>
+      </div>
+    </header>
+      </div>
+      <!-- Navbar ends -->
+
+      <div class="container">
+        <div class="header">
+          <div>
+            <h1 id="user-name">Welcome,</h1>
+            <p>Tue, 07 June 2022</p>
+          </div>
+          <div class="search">
+            <input type="text" placeholder="Search Profile" />
+            <div class="avatar"></div>
           </div>
         </div>
-        <div class="overlap-group-wrapper">
-          <div class="overlap-group">
-            <img class="vuesax-linear-search" src="" />
-            <div class="text-wrapper-3">Search Profile</div>
+
+        <a href="login.html" id="signOut-button">Sign Out</a>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 id="display-name"></h2>
+              <p id="display-email"></p>
+            </div>
+            <button>Edit</button>
           </div>
-        </div>
-        <div class="overlap">
-          <div class="rectangle-2"></div>
-          <div class="rectangle-3"></div>
-          <img class="vuesax-linear-graph" src="" />
-          <img class="img" src="" />
-          <img class="vuesax-linear-medal" src="" />
-          <img class="vuesax-linear-2" src="" />
-          <img class="vuesax-linear-3" src="" />
-        </div>
-        <div class="overlap-2">
-          <div class="text-wrapper-4">Full Name</div>
-          <div class="text-wrapper-5">Gender</div>
-          <div class="text-wrapper-6">Language</div>
-          <div class="text-wrapper-7">Nick Name</div>
-          <div class="text-wrapper-8">Email</div>
-          <div class="text-wrapper-9">Time Zone</div>
-          <img class="rectangle-4" src="" />
-          <div class="group-3">
-            <div class="text-wrapper-10" >Alexa Rawles</div>
-            <div class="text-wrapper-11">alexarawles@gmail.com</div>
-          </div>
-          <div class="group-4">
-            <div class="text-wrapper-12">alexarawles@gmail.com</div>
-            <div class="text-wrapper-13">1 month ago</div>
-          </div>
-          <div class="overlap-wrapper">
-            <div class="div-wrapper">
-              <div class="text-wrapper-14">Edit</div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="full-name">Name</label>
+              <input type="text" id="full-name" placeholder="Your Name" />
+            </div>
+            <div class="form-group">
+              <label for="nick-name">Contact</label>
+              <input type="text" id="contact" placeholder="Contact Number" />
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select id="gender">
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="user-email" placeholder="Your Email" />
+            </div>
+            <div class="form-group">
+              <label for="language">Language</label>
+              <select id="language">
+                <option value="">Select Language</option>
+                <option value="english">English</option>
+                <option value="spanish">Spanish</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="time-zone">Time Zone</label>
+              <select id="time-zone">
+                <option value="">Select Time Zone</option>
+                <option value="pst">PST</option>
+                <option value="est">EST</option>
+              </select>
             </div>
           </div>
-          <div class="group-5">
-            <div class="overlap-3">
-              <div class="rectangle-5"></div>
-              <div class="text-wrapper-15">+Add Email Address</div>
-            </div>
+
+          <div class="form-group">
+            <button class="save-button" id="save-button">Save</button>
           </div>
-          <div class="overlap-4">
-            <div class="text-wrapper-16">Your First Name</div>
-          </div>
-          <div class="overlap-5">
-            <img class="vuesax-linear-arrow" src="" />
-            <div class="text-wrapper-16">Your First Name</div>
-          </div>
-          <div class="overlap-6">
-            <div class="text-wrapper-16">Your First Name</div>
-            <img class="vuesax-linear-arrow" src="" />
-          </div>
-          <div class="overlap-7">
-            <div class="text-wrapper-16">Your First Name</div>
-          </div>
-          <div class="overlap-8">
-            <div class="text-wrapper-16">Your First Name</div>
-            <img class="vuesax-linear-arrow" src="" />
-          </div>
-          <div class="overlap-9">
-            <div class="text-wrapper-16">Your First Name</div>
-            <img class="vuesax-linear-arrow" src="" />
-          </div>
-          <div class="text-wrapper-17">My email Address</div>
-          <div class="overlap-10">
-            <div class="ellipse"></div>
-            <img class="vuesax-bold-sms" src="" />
-          </div>
+
+          <section class="e-token">
+            <h2>E-Token</h2>
+
+            <p>
+              <strong>E-Wallet Balance:</strong>
+              <span id="wallet-balance">$50</span>
+            </p>
+
+            <p>
+              <strong>Leaderboard Rank:</strong>
+              <span id="leaderboard-rank">#5</span>
+            </p>
+          </section>
+
+          <!-- Orders Section -->
+
+          <section class="orders">
+            <h2>Orders</h2>
+
+            <h3>Order History</h3>
+
+            <ul id="order-history"></ul>
+
+            <h3>Current Orders</h3>
+
+            <ul id="current-orders"></ul>
+          </section>
         </div>
       </div>
     </div>
-
-    <footer>
-
-      <div class="footer-flex">
-          <div class="logo"><img src="../Images/logoblack.jpg"></div>
-  
-              <div class="icons">
-                  <p>Follow Us</p>
-                  <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
-                  <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
-                  <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
-                  <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
-                </div>
-              <div class="Contact">
-                  <p style=" font-weight: bold;font-size:30px;">Contact Us</p>
-                  <p>kleostech@gmail.com</p>
-                  <p>+91 8723719121</p>
-              </div>
-          </div>
-      </div>
-  </footer>
-  
-    <script type="module" src="script.js"></script>
+    <script type="module" src="profile-script.js"></script>
   </body>
 </html>
