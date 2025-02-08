@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agency Form</title>
+ 
+</head>
+<header>
+    <div id="navbar">
+        <script>
+            fetch('../navbar.html')
+              .then(response => response.text())
+              .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+              })
+              .catch(error => console.error('Error loading the navbar:', error));
+          </script>
+    </div>
+</header>
+<body>
+  <div class="disposalForm">
+  <div class="container">
+    <div class="header">
+      <h1>Agency Form</h1>
+    </div>
+    <div class="agencyDetails" >
+      <p><strong>Agency Name:</strong> XYZ Solutions</p>
+      <p><strong>District:</strong> New York</p>
+      <p><strong>Email:</strong> contact@xyzsolutions.com</p>
+      <p><strong>Contact:</strong> +1-234-567-8900</p>
+    </div>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="3" placeholder="Enter your address" required></textarea>
+      
+      <label for="contact">Contact</label>
+      <input type="tel" id="contact" name="contact" placeholder="Enter your phone number" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+  <script type="module" src="display-details.js"></script>
+</body>
+</html>

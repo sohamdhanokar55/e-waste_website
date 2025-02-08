@@ -7,20 +7,16 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <div class="nav-bar">
-        <div class="logo">
-          <img src="../Images/logo.jpg" alt="logo" class="logo" />
-        </div>
-        <div class="nav-buttons">
-          <button>Home</button>
-          <button>Events</button>
-          <button>Marketplace</button>
-          <button>Help&Support</button>
-          <button>FAQs</button>
-        </div>
-      </div>
-    </header>
+    <div id="navbar">
+      <script>
+          fetch('../navbar.html')
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById('navbar').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
+        </script>
+  </div>
     <div class="container">
       <div class="half left">
         <div class="content">

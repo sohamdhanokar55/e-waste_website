@@ -5,17 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Waste Agencies</title>
     <link rel="stylesheet" href="agency-search.css">
-    
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f9;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+        }
+        .container {
+          width: 100%;
+          max-width: 600px;
+          background: #fff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        .header h1 {
+          margin: 0;
+          font-size: 1.8em;
+          color: #333;
+        }
+        .agency-details {
+          margin-bottom: 20px;
+          padding: 10px;
+          background-color: #f9f9f9;
+          border-left: 4px solid #007BFF;
+          border-radius: 4px;
+        }
+        .agency-details p {
+          margin: 5px 0;
+          font-size: 0.9em;
+          color: #555;
+        }
+        form {
+          display: flex;
+          flex-direction: column;
+        }
+        label {
+          font-size: 0.9em;
+          margin-bottom: 5px;
+          color: #555;
+        }
+        input, textarea, button {
+          font-size: 1em;
+          padding: 10px;
+          margin-bottom: 15px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        textarea {
+          resize: none;
+        }
+        button {
+          background-color: #007BFF;
+          color: #fff;
+          border: none;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+        button:hover {
+          background-color: #0056b3;
+        }
+      </style>
 </head>
+<header>
+    <div id="navbar">
+        <script>
+            fetch('../navbar.html')
+              .then(response => response.text())
+              .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+              })
+              .catch(error => console.error('Error loading the navbar:', error));
+          </script>
+    </div>
+</header>
 <body>
+   
+   <div class="agencySearch">
     <div class="container">
         <input type="text" class="search-bar" id="search" placeholder="Search for agencies...">
         <ul class="agency-list" id="agencyList"></ul>
     </div>
-
+</div>
     <div class="agency-details" id="agencyDetails"></div>
 
-   
+
+
+<!-- Disposal Form -->
+    <div class="disposalForm">
+    <div class="container">
+      <div class="header">
+        <h1>Agency Form</h1>
+      </div>
+      <div class="agencyDetails" >
+        <p><strong>Agency Name:</strong> XYZ Solutions</p>
+        <p><strong>District:</strong> New York</p>
+        <p><strong>Email:</strong> contact@xyzsolutions.com</p>
+        <p><strong>Contact:</strong> +1-234-567-8900</p>
+      </div>
+      <form>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="3" placeholder="Enter your address" required></textarea>
+        
+        <label for="contact">Contact</label>
+        <input type="tel" id="contact" name="contact" placeholder="Enter your phone number" required>
+  
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+
     <script type = "module" src="agency-search.js"></script>
 </body>
 </html>

@@ -42,7 +42,7 @@ header {
   font-weight: 300;
 }
 .nav-buttons > button:hover {
-  color: lightblue;
+  color: #4CAF50;
   text-decoration: underline;
 }
 .divider {

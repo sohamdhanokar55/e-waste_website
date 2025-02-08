@@ -1,6 +1,6 @@
 // Import the necessary Firebase modules
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -16,7 +16,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
+document.querySelector('.disposalForm').style.display="none";
 // Function to fetch agencies from Firestore
 function fetchAgencies() {
     const agencyList = document.getElementById("agencyList");
@@ -41,7 +41,7 @@ function fetchAgencies() {
                     const li = document.createElement("li");
                     li.classList.add("agency");
                     li.innerHTML = `<span>${agency.firstName} - ${agency.districtName}</span>`;
-                    li.onclick = () => showDetails(agency.firstName, agency.districtName, agency.email, agency.contact);
+                    li.onclick = () => showDetails(agency.firstName, agency.districtName, agency.email, agency.contact,agency);
                     agencyList.appendChild(li);
                 } else {
                     console.log("Missing required fields in agency document:", doc.id);
@@ -55,22 +55,20 @@ function fetchAgencies() {
 }
 
 // Function to show agency details
-function showDetails(firstName, districtName, email, contact) {
+function showDetails(firstName, districtName, email, contact,agency) {
+    
     const detailsDiv = document.getElementById('agencyDetails');
     detailsDiv.innerHTML = `
         <h3>${firstName}</h3>
         <p><strong>District:</strong> ${districtName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Contact:</strong> ${contact}</p>
-        <button class="select-btn" onclick="requestDisposal('${firstName}')">Place Disposal Request</button>
+        <button class="select-btn" onclick="fetchFormAgencies('${agency}')">Place Disposal Request</button>
     `;
     detailsDiv.style.display = 'block';
 }
 
 // Function to handle disposal request
-function requestDisposal(agencyName) {
-    alert(`Disposal request placed for ${agencyName}`);
-}
 
 // Handle search functionality
 document.getElementById('search').addEventListener('input', function() {
@@ -84,3 +82,47 @@ document.getElementById('search').addEventListener('input', function() {
 
 // Fetch agencies when the page loads
 fetchAgencies();
+
+
+
+
+
+
+// Display.js
+
+function fetchFormAgencies (agency) {
+    document.querySelector('.disposalForm').style.display="flex";
+    document.querySelector('.agencySearch').style.display='none';
+    getDocs(collection(db, "agencyLogin")).then(snapshot => {
+        // Log the snapshot docs array
+        console.log("Snapshot docs:", snapshot.docs);  // Log all docs to ensure we have access to them
+    
+        if (snapshot.empty) {
+            // console.log("No agencies found.");
+            // agencyList.innerHTML = "<p>No agencies found.</p>";
+        } else {
+            // Loop through the docs array and log individual documents
+            snapshot.docs.forEach(doc => {
+                console.log("Document ID:", doc.id);  // Log document ID
+                const agency = doc.data();
+                console.log("Agency data:", agency);  // Log the agency data
+                showDetails(agency.firstName, agency.districtName, agency.email, agency.contact);
+            });
+        }
+    }).catch(error => {
+        console.error("Error fetching agencies: ", error);
+    });
+    
+}
+
+function showFormDetails(firstName, districtName, email, contact) {
+    const detailsDiv = document.querySelector('.agencyDetails');
+    console.log(detailsDiv);
+    detailsDiv.innerHTML = `
+        <p><strong>Agency Name:</strong> ${firstName}</p>
+      <p><strong>District:</strong> ${districtName}</p>
+      <p><strong>Email:</strong>${email}</p>
+      <p><strong>Contact:</strong> ${contact}</p>
+    `;
+    
+}
