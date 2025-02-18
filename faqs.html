@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <link rel="stylesheet" href="faqs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script defer src="faqs.js"></script>
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <script>
+                fetch('navbar.html')
+                  .then(response => response.text())
+                  .then(data => {
+                    document.getElementById('navbar').innerHTML = data;
+                  })
+                  .catch(error => console.error('Error loading the navbar:', error));
+              </script>
+        </div>
+    </header>
+    
+    <hr class="divider">
+    
+    <div class="main-container">
+        <div class="background-container">
+            <div class="overlay"></div>
+            <div class="content">
+                <p>Frequently Asked<br>Questions</p>
+            </div>
+        </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- FAQ Section -->
+    <div class="dropdown">
+        <input type="checkbox" id="faq-1">
+        <label for="faq-1" class="question">
+            <div><p>What exactly is e-waste, and why should I be concerned about it?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>E-waste, or electronic waste, includes discarded electronic devices like old phones, laptops, batteries, and home appliances. These items contain hazardous materials like lead and mercury, which can harm the environment if not disposed of properly. On the other hand, they also contain valuable materials like gold and copper that can be recycled. Improper disposal can lead to soil and water contamination, making responsible e-waste management crucial for a sustainable future.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-2">
+        <label for="faq-2" class="question">
+            <div><p>I only have a few small electronics to dispose of. Is it still necessary to recycle them?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>Absolutely! Even small electronics, such as cables, chargers, and batteries, contain components that can be harmful to the environment if thrown into landfills. Many recycling centers accept small e-waste, and some even provide collection bins at public locations. If you’re unsure, you can check our platform for nearby drop-off points or request a pickup if available in your area.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-3">
+        <label for="faq-3" class="question">
+            <div><p>Can’t I just throw my old electronics in the trash? What happens if I do?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>It’s highly discouraged to dispose of electronics with regular trash because they often contain toxic substances that can leak into the ground and water supply. In many places, improper e-waste disposal is even illegal. When you toss electronics in the trash, they end up in landfills, where they release harmful chemicals over time. Recycling ensures that useful materials are recovered and reduces the need for new raw materials.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-4">
+        <label for="faq-4" class="question">
+            <div><p>How does your website help me recycle my old electronics?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>Our platform connects you with authorized e-waste recycling agencies and collection centers. You can list the items you want to dispose of, find nearby recycling agencies, and schedule pickups or drop-offs. Additionally, we offer an incentive-based system where you earn points (E-Tokens) for responsible disposal, which can be redeemed for rewards.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-5">
+        <label for="faq-5" class="question">
+            <div><p>What happens to my e-waste after I recycle it?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>Once collected, your e-waste is sent to certified recycling facilities, where the items are dismantled. Reusable parts are recovered, and harmful materials are safely disposed of. Metals like copper, gold, and silver are extracted and used in new products, reducing the need for mining. The goal is to maximize reuse and minimize landfill waste.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-6">
+        <label for="faq-6" class="question">
+            <div><p>Is there any benefit for me if I recycle my e-waste through your platform?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>Yes! Apart from contributing to a cleaner environment, you can earn E-Tokens for each item you recycle. These tokens can be redeemed for discounts, vouchers, or other rewards, making recycling both responsible and rewarding. We also provide certificates for responsible disposal, which can be useful for businesses and individuals alike.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-7">
+        <label for="faq-7" class="question">
+            <div><p>I have a lot of e-waste, but I don’t have a way to transport it. Do you offer pickup services?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>Yes! Many of our partner agencies provide pickup services for bulk e-waste. When listing your items on our website, you can check if pickup is available in your location. Some agencies may offer free pickup, while others may charge a small fee depending on the quantity and type of waste.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-8">
+        <label for="faq-8" class="question">
+            <div><p>How do I know if an e-waste collection agency is reliable?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>We only list agencies that are certified and comply with environmental regulations. Each agency on our platform has a rating system based on user reviews, past interactions, and reliability scores. You can check their profiles, read user feedback, and choose the agency that best fits your needs.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-9">
+        <label for="faq-9" class="question">
+            <div><p>Is there any benefit for me if I recycle my e-waste through your platform?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>Yes! Apart from contributing to a cleaner environment, you can earn E-Tokens for each item you recycle. These tokens can be redeemed for discounts, vouchers, or other rewards, making recycling both responsible and rewarding. We also provide certificates for responsible disposal, which can be useful for businesses and individuals alike.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-10">
+        <label for="faq-10" class="question">
+            <div><p>I’m concerned about data security. How can I ensure my personal data is erased from my old devices before recycling?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>That’s a great concern! Before recycling your electronic devices, it’s important to reset them to factory settings and remove any personal data. If you’re unsure how to do this, our platform provides step-by-step guides for wiping data from different devices. Some agencies also offer secure data destruction services for added peace of mind.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-11">
+        <label for="faq-11" class="question">
+            <div><p>Can businesses or schools participate in your e-waste management program?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>Definitely! We encourage businesses, schools, and organizations to collaborate with us for large-scale e-waste management. We provide customized solutions, including bulk pickups, corporate sustainability programs, and awareness campaigns to help institutions manage their electronic waste responsibly.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-12">
+        <label for="faq-12" class="question">
+            <div><p>Does your platform offer any educational resources on e-waste?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>Yes! We have a dedicated section for educational articles, blogs, and infographics that explain the impact of e-waste and the importance of recycling. We also organize community events and webinars to spread awareness about responsible e-waste disposal.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-13">
+        <label for="faq-13" class="question">
+            <div><p>How can I encourage my friends and family to start recycling their e-waste?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>How can I encourage my friends and family to start recycling their e-waste?</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-14">
+        <label for="faq-14" class="question">
+            <div><p> I listed an item for recycling, but the agency hasn’t responded. What should I do?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>Sometimes, agencies take time to process requests, especially during busy periods. If you haven’t received a response within a reasonable time, you can try contacting the agency directly through their provided contact details. If the issue persists, our support team can assist you in finding an alternative agency.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-15">
+        <label for="faq-15" class="question">
+            <div><p>What types of electronics can I recycle? Are there any restrictions?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>You can recycle most electronics, including mobile phones, laptops, chargers, batteries, home appliances, and accessories. However, some hazardous materials, like damaged lithium batteries, may require special handling. You can check our guidelines or contact a recycling agency for specific disposal requirements.</p>
+        </div>
+    </div>
+    <hr class="question-divider">
+    <div class="dropdown">
+        <input type="checkbox" id="faq-16">
+        <label for="faq-16" class="question">
+            <div><p> What if I want to sell my old but working electronics instead of recycling them?</p></div>
+            <div><i class="fas fa-chevron-down"></i></div>
+        </label>
+        <div class="answer">
+            <p>That’s a great option! If your device is still functional, you can list it on our Marketplace instead of recycling it. Many buyers look for refurbished or second-hand electronics, helping extend the life of the product and reducing electronic waste. If your item isn’t sellable, recycling is always the best alternative.</p>
+        </div>
+    </div>
+    <hr class="divider-2">
+    <div class="main-question-container">
+        <div class="question-container">
+            <div class="overlay-question"></div>
+            <div class="content-question">
+                <p>Clear Your Doubts!!</p>
+                <button class="ask" data-modal-target="#modal">ASK</button>
+                <div class="modal" id="modal">
+                    <div class="modal-header">
+                      <div class="title">Q & A</div>
+                      <button data-close-button class="close-button">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="text-align: left; margin-bottom: 10px; font-weight: bold; font-size: 20px;">NAME</p>
+                        <div class="ask-questions-form">
+                        <div class="f-name">
+                            <p style="text-align: left; font-weight:500;">First Name</p>
+                            <input type="text" id="FName" placeholder="First Name" required />
+                        </div>
+                        <div class="l-name">
+                            <p style="text-align: left; font-weight: 500;">Last Name</p>
+                            <input type="text" id="lName" placeholder="Last Name" required />
+                         </div>
+                        </div>
+                        <div class="email-input">
+                         <p style="font-weight: 500;">EMAIL</p>
+                         <input type="email" placeholder="Email-Id" required/>
+                        </div>
+                        <div class="question-input">
+                        <p style="font-weight: 500;">Ask Question(required)</p>
+                        <input type="text" placeholder="Ask Question" required/>
+                        </div>
+                    </div>
+                  </div>
+                  <div id="overlay"></div>
+                     
+            </div>
+        </div>
+    </div>
+    <footer>
+
+        <div class="footer-flex">
+            <div class="logo"><img src="Images/logo(black).jpg"></div>
+    
+                <div class="icons">
+                    <p>Follow Us</p>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                  </div>
+                <div class="Contact">
+                    <p style=" font-weight: bold;font-size:30px;">Contact Us</p>
+                    <p>kleostech@gmail.com</p>
+                    <p>+91 8723719121</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

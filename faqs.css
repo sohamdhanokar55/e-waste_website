@@ -1,0 +1,369 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 150px;
+    background-color: #ffffff;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.logo {
+    align-self: center;
+}
+
+.logo > img {
+    width: 170px;
+    height: 170px;
+    margin: 30%;
+}
+
+.nav-buttons {
+    align-self: center;
+}
+
+.nav-buttons > button {
+    color: gray;
+    background-color: transparent;
+    border: none;
+    margin-left: 30px;
+    font-size: 20px;
+    transition: color 0.15s;
+    cursor: pointer;
+    transition: 0.15s;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+}
+
+.nav-buttons > button:hover {
+    color: lightblue;
+    text-decoration: underline;
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background-color: rgb(20, 202, 234);
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.main-container {
+    background-color: rgb(236, 244, 244);
+    padding-top: 30px;
+    height: 630px;
+}
+
+.content > p {
+    font-size: 55px;
+    text-align: left;
+    margin-left: 50px;
+    font-weight: 700;
+    color:white;
+}
+
+.background-container {
+    background-image: url('Images/green.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 600px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    color: rgb(0, 0, 0);
+    margin-bottom: 50px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+.section-divider {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 70px;
+    border-color: black;
+    border-width: 3px;
+}
+
+/* FAQ Styles */
+.dropdown {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.dropdown input {
+    display: none;
+}
+
+/* Styling the question */
+.question {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+    background: #f1f1f1;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.question:hover {
+    background: #e0e0e0;
+}
+
+/* Styling the answer */
+.answer {
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    background: #f9f9f9;
+    padding: 0 15px;
+
+}
+
+/* When checkbox is checked, show the answer */
+.dropdown input:checked + .question + .answer {
+    max-height: 200px;
+    padding: 15px;
+}
+.question-divider{
+    border: 1px solid black;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 30px;
+}
+.main-question-container {
+    padding-top: 30px;
+    height: 300px;
+    background-color: rgb(236, 244, 244);
+}
+.question-container {
+    background-image: url('Images/doubt.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    color: rgb(0, 0, 0);
+    margin-bottom: 50px;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 0px;
+}
+
+.overlay-question{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.content-question{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+}
+
+.divider-2{
+    border: none;
+    height: 1px;
+    background-color: rgb(20, 202, 234);
+    width: 100%;
+    margin-top: 70px;
+    margin-bottom: 0px;
+}
+.content-question>p{
+    font-size: 55px;
+    text-align: center;
+    font-weight: 700;
+    color: black;
+}
+.ask{
+    padding: 10px 20px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 10px; 
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease; 
+}
+.ask:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(1, 1, 1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+.footer-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: black;
+    color: #ffffff;
+    font-family: 'Roboto';
+    margin-top: 100px;
+    height:300px;
+    align-content: center;
+}
+.img-footer{
+     width:200px;
+     height: 100px;
+     margin-left:100px;
+     align-self: center;
+}   
+.img-footer>img{
+    width:100%;
+    height: 100%;
+}
+.icons{
+    align-self: center;
+}
+.icons>p{
+    font-weight: bold;
+    font-size:30px;
+}
+.Contact{
+    align-self: center;
+    margin-right:100px;
+}
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 600px;
+    max-width: 80%;
+    padding-bottom: 20px;
+  }
+  
+  .modal.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+  }
+  
+  .modal-header .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .modal-body {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  #overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+  }
+  
+  #overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .ask-questions-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .f-name{
+    justify-content: flex-start;
+  }
+  .l-name{
+    justify-content: flex-end;
+  }
+  .f-name>input{
+    height:40px;
+    
+ }
+  .l-name>input{
+    height: 40px;
+ 
+  }
+  .email-input,.question-input{
+    text-align: left;
+  }
+  .email-input>input{
+    height: 40px;
+    width: 100%;
+
+  }
+  .question-input > input {
+    height: 70px;
+    width: 100%;
+    padding-bottom: 35px; 
+    font-size: 18px;
+    text-align: left; 
+   
+}
+
+.question-input>input::placeholder {
+    font-size: 18px; 
+    opacity: 0.7; 
+    text-align: center;
+    padding-top:50%;
+}
+
