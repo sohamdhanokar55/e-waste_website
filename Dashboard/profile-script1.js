@@ -40,18 +40,12 @@ const db = getFirestore(app);
 // Ensure the user is logged in before showing profile
 document.addEventListener('DOMContentLoaded', () => {
   onAuthStateChanged(auth, user => {
-    console.log(user);
-    isUser(user.uid);
     if (user) {
-      const userId = user.uid;
-
-      document
-        .getElementById('save-button')
-        .addEventListener('click', () => updatePersonalDetails(userId));
-    } else {
-      // Redirect to login page if not authenticated
-      window.location.href = '../index.html';
-    }
+        const userId = user.uid;
+        const agencyInstance = new isAgencyLogin();
+        agencyInstance.fetchUserData(userId);
+        agencyInstance.showOrderRequests(); // Ensure orders are displayed
+      }      
   });
 });
 
@@ -145,85 +139,19 @@ class isUserLogin {
           const orderList = document.createElement('div');
           orderList.innerHTML = `
           <h3>Current Orders</h3>
-<div class='agency-details' style="display: flex; justify-content: space-between; align-items: center;">
-  <div>
-    <p><strong>Agency Name:</strong> ${user.agencyName}</p>
-    <p><strong>Address:</strong> ${user.address}</p>
-    <p><strong>Email:</strong> ${user.email}</p>
-    <p><strong>Contact:</strong> ${user.contact}</p>
-  </div>
-  <button id="${user.id}" class='more-info' style="padding: 8px 12px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer;">
-    More Info
-  </button>
-</div>
-`; 
+          <div class='agency-details'>
+            <p><strong>Agency Name:</strong>${user.agencyName} </p>
+            <p><strong>Address:</strong>${user.address}</p>
+            <p><strong>Email:</strong>${user.email}</p>
+            <p><strong>Contact:</strong>${user.contact}</p>
+          </div>`;
+
           document.getElementById('current-orders').appendChild(orderList);
-
-          document.querySelector('.more-info').addEventListener('click', async (event)=> {
-            const modal = document.querySelector('.modal-user');
-            const closeModalBtn = document.getElementById('closeModalBtn');
-              modal.style.display = 'flex';
-              closeModalBtn.addEventListener('click', () => {
-                modal.style.display = 'none';
-              });
-              const uid = event.target.getAttribute('id');
-              const docRef = doc(db, 'disposalRequests', uid);
-              const docSnap = await getDoc(docRef);
-              const userModalData=document.createElement('div');
-              userModalData.innerHTML=`
-              <p><strong>Agency Name:</strong> ${user.agencyName}</p>
-    <p><strong>Address:</strong> ${user.address}</p>
-    <p>Email:<strong id='userEmailId'> ${user.email}</strong></p>
-    <p><strong>Contact:</strong> ${user.contact}</p>
-              `;
-              document.querySelector('.userMoal').appendChild(userModalData);
-              
-
-
-              const userEmail = document.getElementById('userEmailId').textContent;
-              const userEmailNormalized = userEmail.toLowerCase();
-
-              const pickupTimeline = collection(db, 'pickupTimeline');
-              const users1 = [];
-
-              console.log("User Email:", userEmailNormalized);
-
-              const contactQuery1 = query(
-                pickupTimeline,
-                where('userEmail', '==', userEmailNormalized)
-              );
-
-              console.log("Query Object:", contactQuery1);
-
-              try {
-                const querySnapshot1 = await getDocs(contactQuery1);
-                console.log("Query Snapshot Size:", querySnapshot1.size);
-
-                querySnapshot1.forEach((doc) => {
-                  users1.push({ id: doc.id, ...doc.data() });
-                });
-
-                console.log("Retrieved Users:", users1);
-
-                userModalData.innerHTML=`<p><strong>Agency Name:</strong> ${user.agencyName}</p>
-                  <p><strong>Address:</strong> ${user.address}</p>
-                  <p>Email:<strong id='userEmailId'> ${user.email}</strong></p>
-                  <p><strong>Contact:</strong> ${user.contact}</p>
-                  <p>Status:${users1[0].schedulePickup}</p>`
-                            ;
-
-              } catch (error) {
-                console.error("Error fetching documents:", error);
-              }          
-          });
-        
-        
-        
         });
       } catch (error) {
         console.error('Error fetching users:', error);
       }
-    }, 3000);
+    }, 5000);
   }
 }
 
@@ -300,15 +228,12 @@ class isAgencyLogin {
     console.log('hello');
     const users = [];
     setTimeout(async () => {
-      const agencyName = document.getElementById('full-name').value.trim();
+    const email = document.getElementById('user-email').value.trim();
       console.log(agencyName);
       try {
         const disposalRequests = collection(db, 'disposalRequests');
 
-        const contactQuery = query(
-          disposalRequests,
-          where('agencyName', '==', agencyName)
-        );
+        const contactQuery = query(disposalRequests, where('agencyEmail', '==', email));
 
         const querySnapshot = await getDocs(contactQuery);
 
@@ -317,7 +242,7 @@ class isAgencyLogin {
           users.push({ id: doc.id, ...doc.data() });
         });
         console.log(users);
-        users.forEach(user => { //
+        users.forEach(user => {
           const orderList = document.createElement('div');
           const uid = user.id;
           orderList.innerHTML = `
@@ -345,11 +270,11 @@ class isAgencyLogin {
             .querySelector('.schedule-btn')
             .addEventListener('click', async (event)=> {
 
-              const modal = document.getElementById('schedulePopup');
+              const modal = document.getElementById('scheduleModal');
               modal.style.display='flex';
-              const closeModalBtn = document.getElementById('closePopupBtn');
-              const pickupOption = document.getElementById('pickupChoice');
-              const calendarSection = document.getElementById('calendarContainer');
+              const closeModalBtn = document.getElementById('closeModalBtn');
+              const pickupOption = document.getElementById('pickupOption');
+              const calendarSection = document.getElementById('calendarSection');
 
               // Display calendar
               closeModalBtn.addEventListener('click', () => {
@@ -380,6 +305,7 @@ class isAgencyLogin {
     <p><strong>Contact:</strong> ${user.contact}</p>
   </div>`;
               console.log(orderList1);
+              document.querySelector('.showDisposal').innerHTML = '';
               document.querySelector('.showDisposal').appendChild(orderList1);
 
 
@@ -399,7 +325,7 @@ class isAgencyLogin {
                   alert("Timeline saved successfully!"); // Alert message after saving
               
                   // Hide form after saving
-                  document.getElementById("schedulePopup").style.display = "none";
+                  document.getElementById("scheduleModal").style.display = "none";
               
                   // Change button text to "Edit Timeline"
               })
@@ -408,25 +334,38 @@ class isAgencyLogin {
               });
               
               });
+
+              // Retrive dispposal request data
+             
+              
+
             });
 
 
           orderList
-            .querySelector('.deny-btn')
-            .addEventListener('click', async event => {
+          document.querySelectorAll('.deny-btn').forEach(button => {
+            button.addEventListener('click', async event => {
               try {
-                const isconfirm = confirm(
-                  'Are you sure you want to delete Disposal Request'
-                );
-                if (isconfirm) {
+                const isConfirm = confirm('Are you sure you want to delete this Disposal Request?');
+                if (isConfirm) {
                   const uid = event.target.getAttribute('id');
+                  if (!uid) {
+                    console.error('No UID found for this disposal request.');
+                    return;
+                  }
+          
                   const docRef = doc(db, 'disposalRequests', uid);
                   await deleteDoc(docRef);
+          
+                  // Optionally, remove the deleted request from the UI
+                  event.target.closest('.disposal-request-item').remove();
                 }
               } catch (err) {
-                console.error(err);
+                console.error('Error deleting disposal request:', err);
               }
             });
+          });
+          
         });
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -501,7 +440,16 @@ function highlightEmptyFields() {
 document.getElementById('signOut-button').addEventListener('click', () => {
   signOut(auth)
     .then(() => {
-      window.location.href = "../index.html"; // Redirect to login page
+      window.location.href = "../Login/login.html"; // Redirect to login page
     })
     .catch(error => console.error('Logout error:', error));
 });
+
+
+// Modal Popup
+
+// Ensure the form is hidden on page load and add event listeners
+
+
+
+

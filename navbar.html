@@ -9,8 +9,12 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 200px;
-  background-color: black;
+  height: 150px;
+  background-color: #2e2e2e;
+  position:sticky;
+  z-index:10000;
+  top:0;
+  width: 100%;
 }
 .logo {
   align-self: center;
@@ -23,41 +27,40 @@
 .nav-buttons {
   align-self: center;
 }
-.nav-buttons > a {
-  color:rgb(158, 241, 113) !important;
-  background-color: transparent;
-  border: none;
-  margin-left: 30px;
-  font-size: 20px;
-  transition: underline 2s;
-  cursor: pointer;
-  transition: 0.15s;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  margin-right: 10px;
+.nav-buttons a {
+    display: inline-block; /* Allows transformation */
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 30px;
+    font-size:23px;
 }
-.nav-buttons > a:hover {
-  text-decoration: underline;
+
+.nav-buttons a:hover {
+    color: #96F522;
+    transform: translate(5px, -5px); 
+}
+
+.nav-buttons a:active {
+    transform: translate(3px, -3px) scale(0.98); /* Slight scale-down on click */
 }
 </style>
         
 </head>
 <body>
-    <header>
         <div class="nav-bar">
         <div class="logo">
-           <img src="Images/logo(black).jpg" alt="logo" class = "logo">
+          
         </div>
         <div class="nav-buttons">
-           <a href="index.html">Home</a>
-           <a href="Dashboard/index.html" style="text-decoration: none;">Dashboard</a>
-           <a>Events</a>
-           <a>Marketplace</a>
-           <a>Help&Support</a>
-           <a>FAQs</a>
+           <a href="../index.html">Home</a>
+           <a href="../Dashboard/index.html">Dashboard</a>
+           <a href="">Marketplace</a>
+           <a href="../Agency Search/agency-search.html">Agency</a>
+           <a href="../awareness.html">Awareness</a>
+           <a href="../faqs.html">FAQs</a>  
         </div>
        </div>
-    </header>
 </body>
 </html>
 

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickup Timeline</title>
+    <link rel="stylesheet" href="timeline.css">
+
+    <style>
+        /* Basic styling for modal and buttons */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            z-index: 1; /* Ensures it's on top */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            margin: 10% auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Close Button */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        /* Input and Button Styles */
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Schedule Button (Initially Visible) -->
+    <button id="scheduleButton">Schedule</button>
+
+    <!-- Modal Overlay (Initially Hidden) -->
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <!-- Close Button -->
+            <span class="close" id="closeButton">&times;</span>
+
+            <!-- Form for Scheduling -->
+            <h2>Pickup Timeline</h2>
+
+            <label>Assigning Pickup Agent</label>
+            <input type="datetime-local" id="inputAssigning">
+
+            <label>Pickup in Transit</label>
+            <input type="datetime-local" id="inputTransit">
+
+            <label>Pickup Complete</label>
+            <input type="datetime-local" id="inputComplete">
+
+            <!-- Save Button -->
+            <button id="saveButton">Save</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="timeline.js"></script>
+
+    <script>
+        // Get modal, button, and close button elements
+        const modal = document.getElementById("modal");
+        const scheduleButton = document.getElementById("scheduleButton");
+        const closeButton = document.getElementById("closeButton");
+
+        // Show modal when the "Schedule" button is clicked
+        scheduleButton.addEventListener("click", function() {
+            modal.style.display = "block";
+        });
+
+        // Close modal when the close button (x) is clicked
+        closeButton.addEventListener("click", function() {
+            modal.style.display = "none";
+        });
+
+        // Close modal when clicking outside the modal content
+        window.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

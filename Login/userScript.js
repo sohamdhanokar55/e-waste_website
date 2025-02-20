@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+// Import Firebase
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js';
 import {
   getAuth,
@@ -25,6 +25,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
+// Show Message Function
 function showMessage(message, divId) {
   var messageDiv = document.getElementById(divId);
   messageDiv.style.display = 'block';
@@ -34,6 +35,8 @@ function showMessage(message, divId) {
     messageDiv.style.opacity = 0;
   }, 5000);
 }
+
+// Sign-Up Functionality
 const signUp = document.getElementById('submitSignUp');
 signUp.addEventListener('click', event => {
   event.preventDefault();
@@ -41,34 +44,28 @@ signUp.addEventListener('click', event => {
   const password = document.getElementById('rPassword').value;
   const firstName = document.getElementById('fName').value;
   const lastName = document.getElementById('lName').value;
-
-  const auth = getAuth();
-  const db = getFirestore();
+  const contactNumber = document.getElementById('contact').value; // New Contact Field
 
   createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       const user = userCredential.user;
-      const userData = {
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
+      const userData = { 
+        email, 
+        firstName, 
+        lastName, 
+        contactNumber // Save Contact Number
       };
+
       showMessage('Account Created Successfully', 'signUpMessage');
-      const docRef = doc(db, 'userLogin', user.uid);
-      setDoc(docRef, userData)
-        .then(() => {
-          // Change this to show the Sign In form instead of redirecting to another page
-          signUpForm.style.display = 'none';
-          signInForm.style.display = 'block';
-          showMessage('Please Sign In to Continue', 'signInMessage');
-        })
-        .catch(error => {
-          console.error('Error writing document', error);
-        });
+      return setDoc(doc(db, 'userLogin', user.uid), userData);
+    })
+    .then(() => {
+      document.getElementById('signup').style.display = 'none';
+      document.getElementById('signIn').style.display = 'block';
+      showMessage('Please Sign In to Continue', 'signInMessage');
     })
     .catch(error => {
-      const errorCode = error.code;
-      if (errorCode === 'auth/email-already-in-use') {
+      if (error.code === 'auth/email-already-in-use') {
         showMessage('Email Address Already Exists !!!', 'signUpMessage');
       } else {
         showMessage('Unable to create user', 'signUpMessage');
@@ -76,28 +73,45 @@ signUp.addEventListener('click', event => {
     });
 });
 
+// Sign-In Functionality
 const signIn = document.getElementById('submitSignIn');
 signIn.addEventListener('click', event => {
   event.preventDefault();
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-  const auth = getAuth();
 
   signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       const user = userCredential.user;
       showMessage('Login is successful', 'signInMessage');
-      // Store the user ID in localStorage for session persistence
       localStorage.setItem('loggedInUserId', user.uid);
-      // Redirect to homepage.html
       window.location.href = '../index.html';
     })
     .catch(error => {
-      const errorCode = error.code;
-      if (errorCode === 'auth/invalid-credential') {
-        showMessage('Incorrect Email or Password', 'signInMessage');
+      if (error.code === 'auth/user-not-found') {
+        showMessage('Email not registered. Please sign up first.', 'signInMessage');
+      } else if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
+        showMessage('Incorrect password. Please try again.', 'signInMessage');
+      } else if (error.code === 'auth/invalid-email') {
+        showMessage('Invalid email format. Please enter a valid email.', 'signInMessage');
+      } else if (error.code === 'auth/too-many-requests') {
+        showMessage('Too many failed attempts. Please try again later.', 'signInMessage');
       } else {
-        showMessage('Account does not exist', 'signInMessage');
+        showMessage('Login failed. Please check your credentials.', 'signInMessage');
       }
     });
+});
+
+// Password Toggle Visibility
+document.querySelectorAll('.toggle-password').forEach(toggleIcon => {
+  toggleIcon.addEventListener('click', function () {
+    const passwordInput = this.previousElementSibling;
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      this.innerHTML = '<i class="fas fa-eye-slash"></i>';
+    } else {
+      passwordInput.type = 'password';
+      this.innerHTML = '<i class="fas fa-eye"></i>';
+    }
+  });
 });

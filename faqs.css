@@ -1,60 +1,19 @@
 html {
     scroll-behavior: smooth;
 }
-
 body {
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Poppins';
 }
 
-.nav-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 150px;
-    background-color: #ffffff;
-    margin-left: 40px;
-    margin-right: 40px;
-}
-
-.logo {
-    align-self: center;
-}
-
-.logo > img {
-    width: 170px;
-    height: 170px;
-    margin: 30%;
-}
-
-.nav-buttons {
-    align-self: center;
-}
-
-.nav-buttons > button {
-    color: gray;
-    background-color: transparent;
-    border: none;
-    margin-left: 30px;
-    font-size: 20px;
-    transition: color 0.15s;
-    cursor: pointer;
-    transition: 0.15s;
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-}
-
-.nav-buttons > button:hover {
-    color: lightblue;
-    text-decoration: underline;
-}
 
 .divider {
     border: none;
     height: 1px;
-    background-color: rgb(20, 202, 234);
+    background-color:#96F522;
     width: 100%;
     margin-bottom: 0;
+    margin-top: 0;
 }
 
 .main-container {
@@ -138,7 +97,8 @@ body {
 /* Styling the answer */
 .answer {
     text-align: left;
-    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-family: 'Poppins';
     font-weight: 300;
     max-height: 0;
     overflow: hidden;
@@ -162,7 +122,7 @@ body {
 .main-question-container {
     padding-top: 30px;
     height: 300px;
-    background-color: rgb(236, 244, 244);
+    background-color:#ffffff;
 }
 .question-container {
     background-image: url('Images/doubt.jpg');
@@ -199,12 +159,12 @@ body {
 .divider-2{
     border: none;
     height: 1px;
-    background-color: rgb(20, 202, 234);
+    background-color:#96F522;
     width: 100%;
     margin-top: 70px;
     margin-bottom: 0px;
 }
-.content-question>p{
+.q-title{
     font-size: 55px;
     text-align: center;
     font-weight: 700;
@@ -220,6 +180,7 @@ body {
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease; 
+    transition: background-color 0.3s;
 }
 .ask:hover{
     background-color: rgb(255, 255, 255);
@@ -233,7 +194,7 @@ body {
     background-color: black;
     color: #ffffff;
     font-family: 'Roboto';
-    margin-top: 100px;
+    margin-top: 210px;
     height:300px;
     align-content: center;
 }
@@ -249,6 +210,7 @@ body {
 }
 .icons{
     align-self: center;
+    margin-left: 70px;
 }
 .icons>p{
     font-weight: bold;

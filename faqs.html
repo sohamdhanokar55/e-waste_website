@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script defer src="faqs.js"></script>
+     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
     <header>
@@ -216,10 +216,12 @@
     </div>
     <hr class="divider-2">
     <div class="main-question-container">
+        <p class="q-title">Clear Your Doubts!!</p>
         <div class="question-container">
+            
             <div class="overlay-question"></div>
             <div class="content-question">
-                <p>Clear Your Doubts!!</p>
+                
                 <button class="ask" data-modal-target="#modal">ASK</button>
                 <div class="modal" id="modal">
                     <div class="modal-header">
@@ -246,6 +248,9 @@
                         <p style="font-weight: 500;">Ask Question(required)</p>
                         <input type="text" placeholder="Ask Question" required/>
                         </div>
+                        <div class = "submit">
+                            <button class = "submit-btn">Submit</button>
+                        </div>
                     </div>
                   </div>
                   <div id="overlay"></div>
@@ -256,7 +261,6 @@
     <footer>
 
         <div class="footer-flex">
-            <div class="logo"><img src="Images/logo(black).jpg"></div>
     
                 <div class="icons">
                     <p>Follow Us</p>
@@ -273,5 +277,12 @@
             </div>
         </div>
     </footer>
+    <script type="module" src="faqs.js"></script>
+    <script>
+        AOS.init({
+          duration:2000,
+          once:true,
+        });
+      </script>
 </body>
 </html>

@@ -11,7 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 <body>
     <div id="navbar">
@@ -26,90 +29,143 @@
     </div>
     <section>
         <hr class="divider">
-        <div class="main-container">
+        <div class="main-container" data-aos="zoom-in">
         <div class="background-container">
             <div class="overlay"></div>
             <div class="content">
                 
-                        <p>"Take the first step towards,<br>responsible e-cycling."</p>
-                        <a href="Login/login.html">
-                         <span class="learn" id="main-button">Get Started</span>
+                        <p style="margin-bottom: 50px;">"Take the first step towards,<br>responsible e-cycling."</p>
+                        <a>
+                         <span class="learn" id="main-button" data-modal-target="#modal">Get Started</span>
                         </a>
             </div>
         </div>
         </div>
     </section>
     <section>
-        <div class="section-2">
-            <h1 class="section-heading">Overview</h1>
+        <div class="modal" id="modal">
+            <div class="modal-header">
+              <div class="title">Choose Your Role</div>
+              <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="option">
+                <a class="citizen-option" href="Login/userLogin.html" target="_blank">
+                    <i class="fa-solid fa-user" style="color: #96F522;"></i>
+                    <p style="color: #fff;">Citizen</p>
+                </a>
+                <a class="agency-option" href="Login/agencyLogin.html" target="_blank">
+                    <i class="fa-solid fa-building" style="color: #96F522;"></i>
+                    <p style="color: #fff;">Agency</p>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div id="overlay"></div>
+        <div class="section-2" data-aos="fade-right">
+            <h1 class="section-heading">Simplifying E-Waste Recycling for Everyone!</h1>
             <hr class="dash">
-            <p>Monitoring the quantities and flows of e-waste is essential for evaluating developments over time,
-                and to set and assess targets towards a sustainable society and circular economy. The development
-                of a recycling infrastructure, sound policies, and legal instruments are more efficiently
-                implemented on the basis of sound e-waste data. Without a global, regional and national picture 
-                of e-waste, the true nature of e-waste challenge incl. collection and recycling rates, 
-                national and regional countermeasures, but also transboundary movements and, in some cases, 
-                illegal shipments will also be incomprehensible. Therefore SCYCLE is (co-)authoring studies, 
-                the so-called Monitors, along a widely approved and supported methodology 
+            <p>E-waste is a growing environmental problem, and improper disposal harms our planet. Our platform connects you with verified e-waste agencies, lets you track your waste, and even rewards you for responsible recycling. 
             </p>
+            <h1 class="section-heading">What do we offer??</h1>
+            <hr class="dash">
+            <div class="key-features">
+                <div class="feature"> 
+                    <i class="fas fa-shopping-cart" style="color:#96F522;; font-size: 45px;"></i>
+                    <p>E-Waste Marketplace</p>
+                </div>   
+                <div class="feature">
+                    <i class="fas fa-gift" style="color: #96F522;; font-size:45px;"></i>
+                    <p>Rewards System</p>
+                </div>
+             
+                <div class="feature">
+                    <i class="fas fa-check-circle" style="color:#96F522;; font-size: 45px;"></i>
+                    <p>Verified Recycling Partners</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-users" style="color:#96F522;; font-size: 45px;"></i>
+                    <p>Community Forum</p>
+                </div>
+                
         </div>
+        </div>
+            <div class="recycling-process" data-aos="fade-right">
+                <div class=img-text>
+                <h1 style="font-size: 60px; color:#96F522">Recycling Process</h1>
+                <hr class="dash">
+                </div>
+                <div class="img-process">
+                <img src="Images/infographic.jpg">
+                </div>
+            </div>
     </section>
     <section>
         <div style="margin-left: 0px; margin-right: 0px;">
-        <div class="section-3">
+        <div class="section-3" data-aos="zoom-right">
             <h1 class="section-heading">Events</h1>
             <hr class="dash">
           <div class="first-event">
-              <div class="first-image"><img src="Images/event.jpg"></div>
+              <div class="first-image">
+                <img src="Images/firstevent.jpg" onclick="window.open('https://pehchaanlivefoundation.org/the-street-school.html', '_blank');" style="cursor: pointer;">
+
+              </div>
               <div class="first-text"> 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat
-                 non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                <h1>Street School</h1>
+                <p>
+                    Pehchaan started its street school Education project for the Tribal, poor and orphans at Bihar, Delhi Mumbai. The School initiated in the year 2014 and there are approximately 85 students are receiving quality education as this facility.
                 </p>
             </div>
           </div>
           <div class="second-event">
             <div class="second-text"> 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat
-                 non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                <h1>Medical Camp</h1>
+                <p>
+                    Pehchaan  is working at the grassroots level towards building healthy communities which would meet the achievement of the Millennium Development Goals as well as contribute to poverty reduction. Through the support of the donors, they have been implementing projects to cater to children’s various needs, making their childhood happier and more fulfilling. They are working relentlessly to give children a chance at building a brighter future and in this quest, every bit of support counts.
                 </p>
             </div>
-            <div class="second-image"><img src="Images/event.jpg"></div>
+            <div class="second-image">
+                <img src="Images/secondevent.jpg" onclick="window.open('https://pehchaanlivefoundation.org/Pehchaan-health-care.html', '_blank');" style="cursor: pointer;">
+
+            </div>
           </div>
           <div class="third-event">
             <div class="first-event">
-                <div class="first-image"><img src="Images/event.jpg"></div>
+                <div class="first-image">
+                    <img src="Images/thirdevent.jpg" onclick="window.open('https://pehchaanlivefoundation.org/sport.html', '_blank');" style="cursor: pointer;">
+                </div>
                 <div class="first-text"> 
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                  in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat
-                   non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                  <h1>Sports</h1>
+                  <p>
+                    To help young women realize the ideals of womanhood and prepare themselves for the responsibilities in the home, the nation and the global community, Pehchaan have their sports facility.  Women Sports provide a platform that gives courage and confidence, and lays the foundation of women of strong characters who can be a productive part of the society.
+                    They strive to support the girls from financially disadvantaged background to tap their undiscovered potential and become world-class sportspersons.
                   </p>
               </div>
             </div>
           </div>
          </div> 
         </div>
-        <div style="text-align: center; margin: 0px; padding:0px"><button class="learn">Learn More</button></div>
+         <div class="last">
+            <p>"Start Recycling Today! <br>Join Our Community and Make an Impact."</p>
+            <a data-modal-target="#modal">Sign Up</a>
+        </div>
     </section>
     <footer>
 
         <div class="footer-flex">
-            <div class="logo"><img src="Images/logoblack.jpg"></div>
+
     
                 <div class="icons">
                     <p>Follow Us</p>
-                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
-                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
-                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
-                    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook fa-2x" style="color: #fff;"></i></a>
+                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter fa-2x" style="color: #fff;"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram fa-2x" style="color: #fff;"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin fa-2x" style="color: #fff;"></i></a>
                   </div>
+                  <div style="color: #fff;align-self: center; font-size: 25px;">
+                    <p>© 2025 KLEOSTECH. All rights reserved.</p>
+                </div>
                 <div class="Contact">
                     <p style=" font-weight: bold;font-size:30px;">Contact Us</p>
                     <p>kleostech@gmail.com</p>
@@ -118,6 +174,12 @@
             </div>
         </div>
     </footer>
-    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration:2000,
+        once:true,
+      });
+    </script>
 </body>
 </html>

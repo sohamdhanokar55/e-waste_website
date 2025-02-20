@@ -3,7 +3,7 @@ html {
 }
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins';
   background-color:black !important; 
 }
 .articles-grid {
@@ -12,12 +12,12 @@ body {
   grid-template-rows: auto;
   column-gap: 30px;
   row-gap: 100px;
-  margin: 100px 30px 70px 30px; 
+  margin: 100px 30px 100px 30px; 
 }
-h1{
-  margin-left: 70px;
-  font-size: 40px;
-  color: rgb(158, 241, 113) !important;
+.heading{
+  margin-left: 30px;
+  font-size: 50px;
+  color:#96F522!important;
 }
 
 .first-article,
@@ -30,8 +30,8 @@ h1{
   background-color: black;
   border-radius: 8px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   font-size: 18px;
   color:white;
 }
@@ -45,12 +45,13 @@ h1{
   background-color:black;
   border-radius: 8px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   font-size: 18px;
   color: white;
 }
 .grid-image {
+  margin-top:0;
   width: 100%;
   height: 100%;
   margin-bottom: 50px;
@@ -58,7 +59,8 @@ h1{
 
 .grid-image img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .grid-details {
@@ -73,20 +75,24 @@ h1{
 .imp-text {
   font-size: 26px;
   font-weight: 900;
-  color: rgb(158, 241, 113);
+  color:#96F522;
 }
 .read-more-button {
   background-color: transparent;
   border: none;
   font-size: 15px;
   cursor: pointer;
-  color: rgb(158, 241, 113);
+  color:#96F522;
   transition: 0.15s;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
+  text-decoration: none;
+  margin-right:5px;
 }
 .read-more-button:hover {
   text-decoration: underline;
+  color: white;
+  margin-left:3px;
 }
 .footer-flex {
   display: flex;
@@ -130,6 +136,7 @@ h1{
             margin: 20px auto;
             margin-top: 20px;
             width: 1050px;
+            border: 3px solid black;
         }
 
         .carousel-inner img {
@@ -158,14 +165,15 @@ h1{
             position: relative;
         }
         .news-section{
-          background-color:white;
+          background-color:#ffffff;
           height: 500px;
         }
   .news-section{
     height:800px;
+    color: #96F522;
   }
   .news-title{
-    color: black;
+    color: #96F522;
     text-align: center;
     font-size: 70px;
     font-weight: bolder;
