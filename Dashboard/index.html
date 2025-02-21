@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile Page</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
   </head>
-  <body>
-   
+  <body> 
       <div id="navbar">
         <script>
             fetch('../navbar.html')
@@ -19,22 +20,26 @@
           </script>
     </div>
    
-      </div>
+
       <!-- Navbar ends -->
+      <hr class="separate">
 
       <div class="container">
+        <div style="text-align: right;">
+          <a href="login.html" id="signOut-button" style="text-align: right;" class="sign-out">Sign Out</a>
+        </div>
         <div class="header">
           <div>
-            <h1 id="user-name">Welcome,</h1>
-            <p>Tue, 07 June 2022</p>
+            <h1 id="user-name" class="d-header">Welcome,</h1>
           </div>
           <div class="search">
-            <input type="text" placeholder="Search Profile" />
-            <div class="avatar"></div>
+            <div class="avatar">
+              <i class="fas fa-user text-lg"></i>
+            </div>
           </div>
         </div>
 
-        <a href="login.html" id="signOut-button">Sign Out</a>
+       <div class="main-dashboard">
         <div class="card">
           <div class="card-header">
             <div>
@@ -65,26 +70,22 @@
               <label for="email">Email</label>
               <input type="email" id="user-email" placeholder="Your Email" />
             </div>
-            
+           
+            </div>
+            <div class="update-profile">
+              <button class="save-button" id="save-button">Save</button>
             </div>
           </div>
 
-          <div class="form-group">
-            <button class="save-button" id="save-button">Save</button>
+          <div class="e-cards">
+            <div id="current-orders"></div>
+            <div id="order-history">
+              <h3 style="margin-left: 12px; font-size: 20px;">Order History</h3>
+              <p style="margin-left: 12px; font-size: 20px;">No Past Orders</p>
+            </div>
           </div>
-
-          <section class="e-token">
-            <h2>E-Token</h2>
-
-            <p>
-              <strong>E-Wallet Balance:</strong>
-              <span id="wallet-balance">$50</span>
-            </p>
-
-            <p>
-              <strong>Leaderboard Rank:</strong>
-              <span id="leaderboard-rank">#5</span>
-            </p>
+          </div>
+          </div>
           </section>
           <!-- Modal Popup User -->
           <div class="modal-user" id="myModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
@@ -119,15 +120,12 @@
 
           <section class="orders">
             
-            <div id="current-orders" ></div>
-            <h3>Order History</h3>
+            
+            
             
 
-            <ul id="order-history" ></ul>
 
-            
-
-            <ul id="current-orders"></ul>
+          
 
 
           </section>

@@ -44,6 +44,85 @@
 .nav-buttons a:active {
     transform: translate(3px, -3px) scale(0.98); /* Slight scale-down on click */
 }
+@media screen and (max-width: 1024px) {
+    .nav-bar {
+        height: 100px;
+        padding: 0 20px;
+        width: 100%;
+    }
+    .logo > img {
+        width: 120px;
+        height: 120px;
+        margin: 0;
+    }
+    .nav-buttons {
+        display: flex;
+        flex-wrap: wrap;  /* Ensures buttons wrap instead of stacking */
+        justify-content: center;
+        gap: 15px;
+    }
+    .nav-buttons a {
+        font-size: 20px;
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 10px 0;
+        width: 100%;
+        background-color: #2e2e2e; 
+    }
+    .logo {
+        margin-bottom: 10px;
+    }
+    .logo > img {
+        width: 100px;
+        height: 100px;
+    }
+    .nav-buttons {
+        display: flex;
+        flex-wrap: wrap; /* Keeps buttons horizontal, allowing wrapping */
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+    .nav-buttons a {
+        font-size: 18px;
+        padding: 5px 10px;
+        white-space: nowrap; /* Prevents text from breaking */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-bar {
+        padding: 10px;
+        width: 100%;
+        background-color: #2e2e2e; 
+    }
+    .logo > img {
+        width: 80px;
+        height: 80px;
+    }
+    .nav-buttons {
+        display: flex;
+        flex-wrap: wrap; /* Ensures buttons stay horizontal */
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+    }
+    .nav-buttons a {
+        font-size: 16px;
+        padding: 5px 8px;
+        margin: 0 5px;
+        white-space: nowrap;
+    }
+}
+
+
 </style>
         
 </head>
@@ -56,6 +135,7 @@
            <a href="../index.html">Home</a>
            <a href="../Dashboard/index.html">Dashboard</a>
            <a href="">Marketplace</a>
+           
            <a href="../Agency Search/agency-search.html">Agency</a>
            <a href="../awareness.html">Awareness</a>
            <a href="../faqs.html">FAQs</a>  

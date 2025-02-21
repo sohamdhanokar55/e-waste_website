@@ -59,7 +59,7 @@ signUp.addEventListener('click', event => {
       const docRef = doc(db, 'agencyLogin', user.uid);
       setDoc(docRef, agencyData)
         .then(() => {
-          // Change this to show the Sign In form instead of redirecting to another page
+          
           signUpForm.style.display = 'none';
           signInForm.style.display = 'block';
           showMessage('Please Sign In to Continue', 'signInMessage');

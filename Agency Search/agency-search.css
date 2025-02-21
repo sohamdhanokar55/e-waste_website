@@ -1,21 +1,22 @@
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
+    padding: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .container {
-    width: 90%;
-    max-width: 600px;
+    width: 90vw !important;
+    max-width: 1200px !important;
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .search-bar {
     width: 100%;
     padding: 10px;
@@ -24,24 +25,38 @@ body {
     margin-bottom: 15px;
     font-size: 16px;
 }
+
 .agency-list {
     list-style: none;
     padding: 0;
+    width: 100%;
 }
+
 .agency {
+    width: 100% !important;
     padding: 15px;
     margin: 10px 0;
     background: #f9f9f9;
     border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
+    display: flex !important;
     align-items: center;
     transition: 0.3s;
     cursor: pointer;
+    box-sizing: border-box;
 }
+
 .agency:hover {
     background: #e0e0e0;
 }
+
+.agency img {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
 .agency-details {
     display: none;
     background: white;
@@ -50,6 +65,15 @@ body {
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.agency-detail-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
 .select-btn {
     background: #28a745;
     color: white;
@@ -58,6 +82,13 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
+
 .select-btn:hover {
     background: #218838;
+}
+
+#navbar{
+    width: 100%;
+    margin-left:0;
+    margin-right: 0;
 }

@@ -69,8 +69,7 @@ class isUserLogin {
           console.log(data);
           this.displayUserData(data);
 
-          // updateOrderList('order-history', data.orderHistory || []);
-          // updateOrderList('current-orders', data.currentOrders || []);
+          
         } else {
           console.log('No user data found');
         }
@@ -85,7 +84,7 @@ class isUserLogin {
       `Welcome,${data.firstName}` || '';
 
     document.getElementById('display-name').textContent =
-      `${data.firstName} ${data.lastName}` || '';
+      `${data.firstName} ` || '';
 
     document.getElementById('display-email').textContent = data.email;
     document.getElementById('user-email').value = data.email;
@@ -93,7 +92,7 @@ class isUserLogin {
     document.getElementById('contact').value = data.contact || '';
     document.getElementById('full-name').value = data.contact || '';
     document.getElementById('full-name').value =
-      `${data.firstName} ${data.lastName}` || '';
+      `${data.firstName}` || '';
 
     // document.getElementById('user-address').value = data.address || '';
     // document.getElementById('user-age').value = data.age || '';
@@ -145,18 +144,18 @@ class isUserLogin {
           const orderList = document.createElement('div');
           orderList.innerHTML = `
           <h3>Current Orders</h3>
-<div class='agency-details' style="display: flex; justify-content: space-between; align-items: center;">
-  <div>
-    <p><strong>Agency Name:</strong> ${user.agencyName}</p>
-    <p><strong>Address:</strong> ${user.address}</p>
-    <p><strong>Email:</strong> ${user.email}</p>
-    <p><strong>Contact:</strong> ${user.contact}</p>
-  </div>
-  <button id="${user.id}" class='more-info' style="padding: 8px 12px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer;">
-    More Info
-  </button>
-</div>
-`; 
+          <div class='agency-details' style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <p><strong>Agency Name:</strong> ${user.agencyName}</p>
+              <p><strong>Address:</strong> ${user.address}</p>
+              <p><strong>Email:</strong> ${user.email}</p>
+              <p><strong>Contact:</strong> ${user.contact}</p>
+            </div>
+            <button id="${user.id}" class='more-info' style="padding: 8px 12px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer;">
+              More Info
+            </button>
+          </div>
+          `; 
           document.getElementById('current-orders').appendChild(orderList);
 
           document.querySelector('.more-info').addEventListener('click', async (event)=> {
@@ -172,9 +171,9 @@ class isUserLogin {
               const userModalData=document.createElement('div');
               userModalData.innerHTML=`
               <p><strong>Agency Name:</strong> ${user.agencyName}</p>
-    <p><strong>Address:</strong> ${user.address}</p>
-    <p>Email:<strong id='userEmailId'> ${user.email}</strong></p>
-    <p><strong>Contact:</strong> ${user.contact}</p>
+              <p><strong>Address:</strong> ${user.address}</p>
+              <p>Email:<strong id='userEmailId'> ${user.email}</strong></p>
+              <p><strong>Contact:</strong> ${user.contact}</p>
               `;
               document.querySelector('.userMoal').appendChild(userModalData);
               
@@ -207,9 +206,9 @@ class isUserLogin {
 
                 userModalData.innerHTML=`<p><strong>Agency Name:</strong> ${user.agencyName}</p>
                   <p><strong>Address:</strong> ${user.address}</p>
-                  <p>Email:<strong id='userEmailId'> ${user.email}</strong></p>
+                  <strong>Email:</strong><div id='userEmailId'> ${user.email}</div>
                   <p><strong>Contact:</strong> ${user.contact}</p>
-                  <p>Status:${users1[0].schedulePickup}</p>`
+                  <p><strong>Pickup Status: </strong>${users1[0].schedulePickup}</p>`
                             ;
 
               } catch (error) {
@@ -321,22 +320,24 @@ class isAgencyLogin {
           const orderList = document.createElement('div');
           const uid = user.id;
           orderList.innerHTML = `
-          <h3>Current Orders</h3>
-<div class="agency-details" style="display: flex; justify-content: space-between; align-items: center;" >
+          <div style="box-shadow:inset 0px 0px 12px rgba(0, 0, 0, 0.9); width:300px;">
+<p style="font-weight: bolder; font-size: 20px; margin-bottom:10px; padding-top: 20px;">Current Orders</p>
+<div class="agency-details" style="display: flex;flex-direction: column; justify-content: space-between; align-items: center; row-gap: 20px; " >
   <div>
-    <p><strong>User Name:</strong> ${user.name}</p>
-    <p><strong>Address:</strong> ${user.address}</p>
-    <p><strong>Email:</strong> ${user.email}</p>
-    <p><strong>Contact:</strong> ${user.contact}</p>
+    <p style="font-size: 20px; margin-bottom:10px;text-align:center;"><strong>User Name:</strong> ${user.name}</p>
+    <p style="font-size: 20px; margin-bottom:10px;text-align:center;"><strong>Address:</strong> ${user.address}</p>
+    <p style="font-size: 20px; margin-bottom:10px;text-align:center;"><strong>Email:</strong> ${user.email}</p>
+    <p style="font-size: 20px; margin-bottom:10px;text-align:center;"><strong>Contact:</strong> ${user.contact}</p>
   </div>
-  <div>
-    <button style="margin-right: 10px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;" class='schedule-btn'id="${uid}">
+  <div> 
+    <button style="margin-right: 10px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 10px;" class='schedule-btn'id="${uid}">
       Schedule
     </button>
-    <button style="padding: 10px 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;" class='deny-btn'id="${uid}">
+    <button style="padding: 10px 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 20px;" class='deny-btn'id="${uid}">
       Deny
     </button>
   </div>
+</div>
 </div>
           </div>`;
           document.getElementById('current-orders').appendChild(orderList);
@@ -435,7 +436,7 @@ class isAgencyLogin {
   }
 }
 
-// Function to determine if it’s a user or agency
+
 const isUser = async userId => {
   const documentId = userId;
   const collections = ['userLogin', 'agencyLogin'];
@@ -454,7 +455,7 @@ const isUser = async userId => {
   
 console.log(currentCollection);
   if (currentCollection === 'userLogin') {
-    const userLoginInstance = new isUserLogin(); // Works now
+    const userLoginInstance = new isUserLogin(); 
     userLoginInstance.fetchUserData(userId);
     userLoginInstance.showCurrentOrders();
     document
@@ -485,7 +486,7 @@ function highlightEmptyFields() {
       input.style.border = '2px solid red'; // Highlight empty field
       isValid = false;
     } else {
-      input.style.border = ''; // Remove highlight if field is not empty
+      input.style.border = ''; 
     }
   });
 

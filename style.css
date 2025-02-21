@@ -6,6 +6,7 @@
     background-color: black;
     font-family:'Poppins';
   }
+ 
   .starting-image {
     width: 50px;
     height: 60px;
@@ -81,7 +82,7 @@
     margin-top: 0px;
     font-family: 'Poppins';
     margin-bottom: 100px;
-    background-color: black
+    background-color:black
   }
   .section-heading {
     text-align: center;
@@ -145,7 +146,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:  #fafafa;
+    background-color:#333;
     padding-top:80px;
     padding-bottom: 80px;
   }

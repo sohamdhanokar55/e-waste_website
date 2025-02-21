@@ -60,7 +60,6 @@ async function fetchAgencyData(agencyId) {
   }
 }
 
-// Display agency details
 function displayAgencyData(data) {
   document.getElementById('display-name').textContent = data.name || '';
   document.getElementById('display-email').value = data.email || '';
@@ -69,7 +68,7 @@ function displayAgencyData(data) {
   document.getElementById('address').value = data.address || '';
 }
 
-// Save updated agency details
+
 async function saveAgencyData() {
   const agencyId = auth.currentUser.uid;
   const agencyRef = doc(db, 'agencyLogin', agencyId);
@@ -87,7 +86,6 @@ async function saveAgencyData() {
 
 document.getElementById('save-button').addEventListener('click', saveAgencyData);
 
-// Fetch and display current orders for the agency
 async function fetchCurrentOrders(agencyId) {
   try {
     const agencyRef = doc(db, 'agencyLogin', agencyId);
@@ -121,7 +119,6 @@ async function fetchCurrentOrders(agencyId) {
   }
 }
 
-// Logout functionality
 document.getElementById('signOut-button').addEventListener('click', () => {
   signOut(auth)
     .then(() => {
