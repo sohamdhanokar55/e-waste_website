@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Volunteer Dashboard</title>
+    <title>User Dashboard</title>
     <link rel="stylesheet" href="userdashboard.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.0/dist/full.css" rel="stylesheet">
@@ -13,6 +13,7 @@
 <div class="sidebar">
     <ul>  
         <li><a href="#">Profile</a></li>
+        <li><a href="#">E-Tokens</a></li>
         <li><a href="#">Orders</a></li>
         <li><a href="#">Logout</a></li>
     </ul>
@@ -42,14 +43,6 @@
       <div class="form-group">
         <label for="nick-name">Contact</label>
         <input type="text" id="contact" placeholder="Contact Number" />
-      </div>    
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" id="description" placeholder="Enter Description" />
-      </div>
-      <div class="form-group">
-        <label for="agency-name">Agency Name</label>
-        <input type="text" id="agency-name" placeholder="Your Agency Name" />
       </div>
       <div class="form-group">
         <label for="age">Age</label>
@@ -60,12 +53,8 @@
         <input type="email" id="user-email" placeholder="Your Email" />
       </div>
       <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" id="city" placeholder="Your Name" />
-      </div>
-      <div class="form-group">
-        <label for="state">State</label>
-        <input type="text" id="state" placeholder="Your Name" />
+        <label for="full-name">District</label>
+        <input type="text" id="full-name" placeholder="Your Name" />
       </div>
       <div class="form-group">
         <label for="full-name">Address</label>
@@ -77,5 +66,49 @@
         <button class="save-button" id="save-button">Save</button>
       </div>
     </div>
+    <div class="e-tokens">
+      <p class="dashboard-head">E-Tokens</p>
+
+      <!-- E-Wallet Section -->
+    <div class="bg-base-200 p-4 rounded-lg shadow-lg w-[250px]">
+      <h2 class="text-xl font-semibold mb-2">E-Wallet Balance</h2>
+      <p id="eWalletBalance" class="text-lg font-bold text-[#00A500]">Loading...</p>
+  </div>
+
+  <!-- Confirm & Redeem Buttons -->
+  <button id="confirmBtn" class="btn btn-primary mt-4">Confirm & Earn 400 E-Tokens</button>
+  <button id="redeemBtn" class="btn btn-secondary mt-4 bg-[#00A500]">Redeem 500 E-Tokens</button>
+
+  <!-- Modal Popup -->
+  <div id="modalPopup" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div class="bg-white p-6 rounded-lg shadow-lg relative">
+          <h2 class="text-lg font-semibold">🎉 You received 400 E-Tokens!</h2>
+      </div>
+  </div>
+
+  <!-- Leaderboard Section -->
+  <div class="mt-6">
+      <h2 class="text-xl font-semibold mb-2">Leaderboard</h2>
+      <div class="bg-base-200 p-4 rounded-lg shadow-lg" id="leaderboard">
+          <p class="text-[#00A500]">Loading...</p>
+      </div>
+  </div>
+
+  <!-- Progress & Badges Section -->
+  <div class="mt-6">
+      <h2 class="text-xl font-semibold mb-2">Progress</h2>
+      <div class="progress-container">
+          <div id="progressBar" class="progress-bar"></div>
+      </div>
+      <div id="badgesContainer" class="badges-container">
+</div>
+  </div>
+
+
+         
+  <script type="module" src="e-tokens.js"></script>
+
+    </div>
+</div>
 </body>
 </html>

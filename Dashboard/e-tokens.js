@@ -99,14 +99,29 @@ function updateProgressBar(maxETokens) {
     const progress = Math.min((maxETokens / maxThreshold) * 100, 100);
     progressBar.style.width = `${progress}%`;
 
-    // Update badges
+    // Update badges container (clear previous)
     badgesContainer.innerHTML = "";
-    milestones.forEach(milestone => {
+
+    // Milestones and badge types with icons
+    const milestoneBadges = [
+        { tokens: 2500, badge: "bronze", icon: "fa-coins" },
+        { tokens: 4000, badge: "bronze", icon: "fa-coins" },
+        { tokens: 6000, badge: "silver", icon: "fa-medal" },
+        { tokens: 8500, badge: "silver", icon: "fa-medal" },
+        { tokens: 10000, badge: "gold", icon: "fa-trophy" }
+    ];
+
+    // Render badges based on milestone
+    milestoneBadges.forEach(milestone => {
         const badgeDiv = document.createElement("div");
         badgeDiv.classList.add("badge");
 
+        // Set badge color and icon if the user reaches the milestone
         if (maxETokens >= milestone.tokens) {
-            badgeDiv.classList.add(milestone.badge.toLowerCase());
+            badgeDiv.classList.add(milestone.badge);
+            badgeDiv.innerHTML = `<i class="fa ${milestone.icon}"></i>`;
+        } else {
+            badgeDiv.innerHTML = `<i class="fa fa-lock"></i>`;
         }
 
         badgesContainer.appendChild(badgeDiv);

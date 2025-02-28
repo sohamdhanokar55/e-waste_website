@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Waste Disposal Timeline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css" rel="stylesheet">
+    <style>
+        /* Vertical Progress Bar */
+        .progress-container {
+            position: relative;
+            width: 4px;
+            background-color: #d1d5db;
+            height: 300px;
+            margin: auto;
+        }
+        .progress-bar {
+            position: absolute;
+            width: 100%;
+            background-color: #16a34a;
+            transition: height 0.5s ease-in-out;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+            width: 100%;
+        }
+        .timeline-content {
+            background-color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            width: 180px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        .timeline-date {
+            font-weight: bold;
+            color: black;
+        }
+        .timeline-status {
+            font-size: 14px;
+            font-weight: bold;
+            color: #374151; /* Dark Gray for visibility */
+        }
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background-color: white;
+            border: 3px solid #16a34a;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="flex justify-center items-center min-h-screen bg-gray-100">
+
+    <div class="w-full max-w-lg bg-white p-6 shadow-md rounded-md">
+        <h2 class="text-lg font-bold text-center mb-4">E-Waste Disposal Timeline</h2>
+
+        <div class="flex items-start justify-center relative">
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar" style="height: 0%;"></div>
+            </div>
+            <div id="timeline" class="absolute w-full flex flex-col items-center"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: 'AIzaSyAPOAnjEonfSA85fOgj8p2ADHGJZ1aJbKA',
+            authDomain: 'e-waste-86617.firebaseapp.com',
+            projectId: 'e-waste-86617',
+            storageBucket: 'e-waste-86617.firebasestorage.app',
+            messagingSenderId: '558005114520',
+            appId: '1:558005114520:web:a8b5fb2bc1cc22340fa2ed',
+            measurementId: 'G-EW6GZCDY30',
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth();
+
+        // Generate timeline function
+        function generateTimeline(disposalDateStr) {
+            if (!disposalDateStr) {
+                console.error("No disposalDate found!");
+                return;
+            }
+
+            const disposal = new Date(disposalDateStr);
+            if (isNaN(disposal.getTime())) {
+                console.error("Invalid date format:", disposalDateStr);
+                return;
+            }
+
+            const today = new Date();
+
+            // Define milestone dates: 3 days before disposal
+            const dates = [
+                new Date(disposal.getTime() - 3 * 24 * 60 * 60 * 1000), // 3 days before
+                new Date(disposal.getTime() - 2 * 24 * 60 * 60 * 1000), // 2 days before
+                disposal // Disposal date itself
+            ];
+
+            const statuses = ["Reminder", "Assigning Agent", "Process Complete"];
+            let progress = 0;
+
+            for (let i = 0; i < dates.length; i++) {
+                if (today >= dates[i]) {
+                    progress = i + 1;
+                } else {
+                    break;
+                }
+            }
+
+            // Update progress bar height
+            const progressBar = document.getElementById("progressBar");
+            const progressPercent = (progress / dates.length) * 100;
+            progressBar.style.height = `${progressPercent}%`;
+
+            // Populate timeline
+            const timeline = document.getElementById("timeline");
+            timeline.innerHTML = ""; // Clear existing content
+
+            dates.forEach((date, index) => {
+                const isCompleted = index < progress ? "bg-green-500 text-white" : "bg-gray-300";
+                
+                // Alternating left-right alignment
+                const alignLeft = index % 2 === 0;
+                const justifyClass = alignLeft ? "justify-start" : "justify-end";
+
+                timeline.innerHTML += `
+                    <div class="timeline-item w-full flex ${justifyClass} relative">
+                        <div class="timeline-content ${isCompleted}">
+                            <div class="timeline-date">${date.toDateString()}</div>
+                            <div class="timeline-status">${statuses[index]}</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                `;
+            });
+        }
+
+        // Fetch disposal date for logged-in user
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const q = query(collection(db, "disposalRequests"), where("email", "==", user.email));
+                const querySnapshot = await getDocs(q);
+
+                if (!querySnapshot.empty) {
+                    const latestRequest = querySnapshot.docs[0].data(); // Get first request
+                    generateTimeline(latestRequest.disposalDate);
+                } else {
+                    console.log("No disposal request found for this user.");
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

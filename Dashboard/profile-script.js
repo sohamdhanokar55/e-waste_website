@@ -9,6 +9,7 @@ import {
   getFirestore,
   doc,
   getDoc,
+  updateDoc,
   setDoc,
   where,
   query,
@@ -380,27 +381,27 @@ class isAgencyLogin {
         users.forEach(user => { //
           const orderList = document.createElement('div');
           const uid = user.id;
+          
           orderList.innerHTML = `
-          <div style="box-shadow:inset 0px 0px 12px rgba(0, 0, 0, 0.9); width:300px;">
-<p style="font-weight: bolder; font-size: 20px; margin-bottom:10px; padding-top: 20px;">Current Orders</p>
-<div class="agency-details" style="display: flex;flex-direction: column; justify-content: space-between; align-items: center; row-gap: 20px; " >
-  <div>
-    <p style="font-size: 20px; margin-bottom:10px;text-align:center;"><strong>User Name:</strong> ${user.name}</p>
-    <p style="font-size: 20px; margin-bottom:10px;text-align:center;"><strong>Address:</strong> ${user.address}</p>
-    <p style="font-size: 20px; margin-bottom:10px;text-align:center;"><strong>Email:</strong> ${user.email}</p>
-    <p style="font-size: 20px; margin-bottom:10px;text-align:center;"><strong>Contact:</strong> ${user.contact}</p>
-  </div>
-  <div> 
-    <button style="margin-right: 10px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 10px;" class='schedule-btn'id="${uid}">
-      Schedule
-    </button>
-    <button style="padding: 10px 20px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer; margin-bottom: 20px;" class='deny-btn'id="${uid}">
-      Deny
-    </button>
-  </div>
+          <div style="display: flex; flex-direction: column; align-items: center; width: 95%; padding: 10px;">
+    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <div style="margin-bottom: 15px;">
+            <img src="Images/profilepic.jpg" alt="Profile Picture" style="width: 60px; height: 60px; border-radius: 50%;">
+        </div>
+        <div style="text-align: center; margin-bottom: 15px;">
+            <p style="font-size: 12px; line-height: 22px; margin: 5px 0;">Product-Name: <b></b></p>
+            <p style="font-size: 12px; line-height: 22px; margin: 5px 0;">Name: ${user.name}<b></b></p>
+            <p style="font-size: 12px; line-height: 22px; margin: 5px 0;">Email: ${user.email}<b></b></p>
+            <p style="font-size: 12px; line-height: 22px; margin: 5px 0;">Contact:${user.contact} <b></b></p>
+            <p style="font-size: 12px; line-height: 22px; margin: 5px 0;">Address: ${user.address}<b></b></p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; justify-content: center;">
+            <button id="${uid}" class="schedule-btn" style="background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Schedule</button>
+            <button id="${uid}" class="deny-btn" style="background-color: #dc3545; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Deny</button>
+        </div>
+    </div>
 </div>
-</div>
-          </div>`;
+`;        
           document.getElementById('current-orders').appendChild(orderList);
 
           orderList
@@ -422,15 +423,213 @@ class isAgencyLogin {
 
               console.log(uid);
               const orderList1 = document.createElement('div');
+              orderList1.innerHTML='';
               orderList1.innerHTML = `<div>
               <p><strong>User Name:</strong> ${user.name}</p>
               <p><strong>Address:</strong> ${user.address}</p>
               <p>Email:<strong id='userEmail'> ${user.email}</p>
               <p><strong>Contact:</strong> ${user.contact}</p>
-              <p>Schedule Requested:<div id="date"> ${user.scheduleDisposal}</div></p>
+              <p>Schedule Requested:<div id="date"> ${user.disposalDate}</div></p>
               <p>Assign PickupAgent: <p>
               
               </div>`;
+              document.querySelector('.showDisposal').innerHTML='';
+              document.querySelector('.showDisposal').appendChild(orderList1);
+
+
+              // Save button pressed
+              const approve=document.querySelector('.approved')
+              approve.addEventListener('click',function async(){
+              const email=document.getElementById('userEmail').textContent;
+              const date=document.getElementById('date').textContent;
+                addDoc(collection(db, "pickupTimeline"), {
+                  userEmail:email,
+                  scheduleStatus: "Request Approved",
+                  scheduleDate: date,
+                  timestamp: serverTimestamp()
+              })
+              .then(() => {
+                  alert("Request Approved successfully!"); // Alert message after saving
+                  document.getElementById("schedulePopup").style.display = "none";
+              
+                  // Change button text to "Edit Timeline"
+              })
+              .catch((error) => {
+                  console.error("Error saving data: ", error);
+              });
+              
+              });
+            });
+
+
+          orderList
+            .querySelector('.deny-btn')
+            .addEventListener('click', async event => {
+              try {
+                const isconfirm = confirm(
+                  'Are you sure you want to delete Disposal Request'
+                );
+                if (isconfirm) {
+                  const uid = event.target.getAttribute('id');
+                  const docRef = doc(db, 'disposalRequests', uid);
+                  await deleteDoc(docRef).then(()=>{
+                    alert('Deleted Successfully');
+                    location.reload();
+                  });
+
+                }
+              } catch (err) {
+                console.error(err);
+              }
+            });
+        });
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    }, 3000);
+  }
+}
+
+class isVolunteerLogin{
+  fetchUserData(userId) {
+    console.log('hello');
+    getDoc(doc(db, 'volunteerLogin', userId))
+      .then(docSnap => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          console.log(data);
+          this.displayUserData(data);
+
+          // updateOrderList('order-history', data.orderHistory || []);
+          // updateOrderList('current-orders', data.currentOrders || []);
+        } else {
+          console.log('No user data found');
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching user data:', error);
+      });
+  }
+
+  displayUserData(data) {
+    document.getElementById('user-name').textContent =
+      `Welcome,${data.firstName}` || '';
+
+    document.getElementById('display-name').textContent =
+      `${data.firstName} ` || '';
+
+    document.getElementById('display-email').textContent = data.email;
+    document.getElementById('user-email').value = data.email;
+
+    document.getElementById('contact').value = data.contact || '';
+    document.getElementById('full-name').value = data.contact || '';
+    document.getElementById('full-name').value = `${data.firstName} ` || '';
+
+    // document.getElementById('user-address').value = data.address || '';
+    // document.getElementById('user-age').value = data.age || '';
+    // document.getElementById('wallet-balance').textContent = `$${
+    //   data.tokens || 0
+    // }`;
+    // document.getElementById('leaderboard-rank').textContent = `#${
+    //   data.rank || 'N/A'
+    // }`;
+  }
+   updatePersonalDetails(userId) {
+    if (highlightEmptyFields()) {
+      const updatedData = {
+        firstName: document.getElementById('full-name').value,
+        contact: document.getElementById('contact').value,
+        email: document.getElementById('user-email').value,
+        // address: document.getElementById('user-address').value,
+        // age: document.getElementById('user-age').value,
+      };  
+  
+      setDoc(doc(db, 'agencyLogin', userId), updatedData, { merge: true })
+        .then(() => alert('Profile updated successfully!'))
+        .catch(error => alert('Error updating profile: ' + error.message));
+    } else {
+      alert('Please fill in all fields.');
+    }
+  }
+
+
+  showOrderRequests() {
+    console.log('hello');
+    const users = [];
+    setTimeout(async () => {
+      const agencyName = document.getElementById('full-name').value.trim();
+      console.log(agencyName);
+      try {
+        const disposalRequests = collection(db, 'disposalRequests');
+
+        const contactQuery = query(
+          disposalRequests,
+          where('agencyName', '==', agencyName)
+        );
+
+        const querySnapshot = await getDocs(contactQuery);
+
+        console.log(querySnapshot.size);
+        querySnapshot.forEach(doc => {
+          users.push({ id: doc.id, ...doc.data() });
+        });
+        console.log(users);
+        users.forEach(user => { //
+          const orderList = document.createElement('div');
+          const uid = user.id;
+          
+          orderList.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; width: 95%; padding: 10px;">
+    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <div style="margin-bottom: 15px;">
+            <img src="Images/profilepic.jpg" alt="Profile Picture" style="width: 60px; height: 60px; border-radius: 50%;">
+        </div>
+        <div style="text-align: center; margin-bottom: 15px;">
+            <p style="font-size: 12px; line-height: 22px; margin: 5px 0;">Product-Name: <b></b></p>
+            <p style="font-size: 12px; line-height: 22px; margin: 5px 0;">Name: ${user.name}<b></b></p>
+            <p style="font-size: 12px; line-height: 22px; margin: 5px 0;">Email: ${user.email}<b></b></p>
+            <p style="font-size: 12px; line-height: 22px; margin: 5px 0;">Contact:${user.contact} <b></b></p>
+            <p style="font-size: 12px; line-height: 22px; margin: 5px 0;">Address: ${user.address}<b></b></p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; justify-content: center;">
+            <button id="${uid}" class="schedule-btn" style="background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Schedule</button>
+            <button id="${uid}" class="deny-btn" style="background-color: #dc3545; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">Deny</button>
+        </div>
+    </div>
+</div>
+`;        
+          document.getElementById('current-orders').appendChild(orderList);
+
+          orderList
+            .querySelector('.schedule-btn')
+            .addEventListener('click', async (event)=> {
+
+              const modal = document.getElementById('schedulePopup');
+              modal.style.display='flex';
+              const closeModalBtn = document.getElementById('closePopupBtn');
+              
+              closeModalBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+              });
+              const uid = event.target.getAttribute('id');
+              const docRef = doc(db, 'disposalRequests', uid);
+              const docSnap = await getDoc(docRef);
+
+              const user=docSnap.data();
+
+              console.log(uid);
+              const orderList1 = document.createElement('div');
+              orderList1.innerHTML='';
+              orderList1.innerHTML = 
+              `<div>
+              <p><strong>User Name:</strong> ${user.name}</p>
+              <p><strong>Address:</strong> ${user.address}</p>
+              <p>Email:<strong id='userEmail'> ${user.email}</p>
+              <p><strong>Contact:</strong> ${user.contact}</p>
+              <p>Schedule Requested:<div id="date"> ${user.disposalDate}</div></p>
+              <p>Assign PickupAgent: <p>
+              </div>`;
+              document.querySelector('.showDisposal').innerHTML='';
               document.querySelector('.showDisposal').appendChild(orderList1);
 
 
@@ -488,9 +687,11 @@ class isAgencyLogin {
 }
 
 
+
+
 const isUser = async userId => {
   const documentId = userId;
-  const collections = ['userLogin', 'agencyLogin'];
+  const collections = ['userLogin', 'agencyLogin','volunteerLogin'];
   let currentCollection;
 
   for (const collectionName of collections) {
@@ -512,13 +713,23 @@ console.log(currentCollection);
     document
   .getElementById('save-button')
   .addEventListener('click', () => userLoginInstance.updatePersonalDetails(userId));
-  } else {
+  } 
+  else if(currentCollection === 'agencyLogin') {
     const isAgencyLoginInstance = new isAgencyLogin();
     isAgencyLoginInstance.fetchUserData(userId);
     isAgencyLoginInstance.showOrderRequests();
     document
   .getElementById('save-button')
   .addEventListener('click', () => isAgencyLoginInstance.updatePersonalDetails(userId));
+  }
+  else{
+    const isVolunteerLoginInstance = new isVolunteerLogin();
+    isVolunteerLoginInstance.fetchUserData(userId);
+    isVolunteerLoginInstance.showOrderRequests();
+    document
+  .getElementById('save-button')
+  .addEventListener('click', () => isVolunteerLoginInstance.updatePersonalDetails(userId));
+    
   }
 };
 
@@ -544,6 +755,8 @@ function highlightEmptyFields() {
   return isValid;
 }
 
+
+
 // Fetch and display user details
 
 // Update personal details
@@ -556,4 +769,88 @@ document.getElementById('signOut-button').addEventListener('click', () => {
       window.location.href = "../index.html"; // Redirect to login page
     })
     .catch(error => console.error('Logout error:', error));
+});
+
+
+const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dwnorfkwt/upload";
+const CLOUDINARY_UPLOAD_PRESET = "Unsigned_upload";
+
+// Select Elements
+const profilePic = document.getElementById("profilePic");
+const profileInput = document.getElementById("profileInput");
+
+// Function to upload image to Cloudinary
+const uploadToCloudinary = async (file) => {
+    try {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+        const response = await fetch(CLOUDINARY_URL, {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+        return data.secure_url;
+    } catch (error) {
+        console.error("Error uploading to Cloudinary:", error);
+        return null;
+    }
+};
+
+// Function to update user's document in Firestore
+const updateUserProfilePic = async (email, imageUrl) => {
+    try {
+        const userQuery = query(collection(db, "agencyLogin"), where("email", "==", email));
+        const userSnapshot = await getDocs(userQuery);
+
+        if (userSnapshot.empty) {
+            console.warn("No user found in agencyLogin collection.");
+            return;
+        }
+
+        const userDoc = userSnapshot.docs[0].ref;
+        await updateDoc(userDoc, { profilePic: imageUrl });
+
+        console.log("Profile picture updated successfully.");
+    } catch (error) {
+        console.error("Error updating Firestore:", error);
+    }
+};
+
+// Function to handle image upload
+profileInput.addEventListener("change", async (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+        const user = auth.currentUser;
+        if (!user) {
+            alert("You must be logged in to upload a profile picture.");
+            return;
+        }
+
+        const imageUrl = await uploadToCloudinary(file);
+        if (imageUrl) {
+            profilePic.src = imageUrl; // Update UI
+            await updateUserProfilePic(user.email, imageUrl); // Update Firestore
+        }
+    }
+});
+
+
+
+// Fetch and display the user's profile picture if available
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        const userQuery = query(collection(db, "agencyLogin"), where("email", "==", user.email));
+        const userSnapshot = await getDocs(userQuery);
+
+        if (!userSnapshot.empty) {
+            const userData = userSnapshot.docs[0].data();
+            if (userData.profilePic) {
+                profilePic.src = userData.profilePic; // Load existing profile picture
+            }
+        }
+    }
 });

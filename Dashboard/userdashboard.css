@@ -13,7 +13,7 @@ body {
 .sidebar {
   width: 250px;
   height: 100vh;
-  background-color:#00A550;
+  background-color:#0B2B26;
   color: white;
   padding-top: 20px;
   position: fixed;
@@ -41,10 +41,14 @@ body {
 }
 
 .sidebar ul li a:hover {
-  background-color: #34495e;
+  background-color: #123933;
   width: 100%;
 }
-
+.start-flex{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
 /* Main content area (shifts right to make space for sidebar) */
 .main-content {
   margin-left: 250px;
@@ -110,10 +114,9 @@ body {
 }
 .save-button{
   padding: 5px 5px;
-  font-size: 15px;
-  color: black;
-  background-color: transparent;
-  border: 2px solid black;
+  font-size: 18px;
+  color: white;
+  background-color:#005A00;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
@@ -122,8 +125,7 @@ body {
   text-align: center;
 }
 .save-button:hover{
-  color: white;
-  background-color: black;
+  background-color: #018e01;
 }
 .save-flex{
   display: flex;
@@ -147,12 +149,12 @@ body {
 .progress-bar {
   height: 100%;
   width: 0%;
-  background-color: green;
+  background-color:#00a550;
   border-radius: 10px;
   transition: width 0.5s ease-in-out;
 }
 
-/* Badge Styles */
+/* Badge Styles - Updated with Icon Support */
 .badges-container {
   display: flex;
   justify-content: space-between;
@@ -163,14 +165,28 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: #ccc !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: white;
 }
 
+/* Badge colors based on milestone */
 .bronze {
-  background-color: #cd7f32;
+  background-color: #cd7f32 !important;
 }
 
 .silver {
-  background-color: #c0c0c0;
+  background-color: #c0c0c0 !important;
 }
 
+.gold {
+  background-color: #FFD700 !important;
+}
+
+.badge i {
+  font-size: 18px;
+  color: white;
+}

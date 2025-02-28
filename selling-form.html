@@ -87,7 +87,8 @@
            display: flex;
            flex-direction: row;
            justify-content: flex-start;
-           background-color: #4CAF50;
+           background-color: #005A00;
+           color: #ffffff;
             border: none;
             padding: 10px 15px;
             border-radius: 50%;
@@ -98,7 +99,7 @@
 <body>
     <div class="custom-form">
         <button class="back-button">
-        <i class="fa-solid fa-arrow-left" style="font-size: 32px; text-align: left;"></i>
+        <i class="fa-solid fa-arrow-left" style="font-size: 24px; text-align: left; "></i>
         </button>
         <h2>Sell Your E-Products</h2>
         <form id="ewasteForm">
@@ -134,20 +135,21 @@
                 <span>📷</span><input type="file" id="photo1" name="photos" accept="image/*" required>
             </div>
             <div class="image-upload">
-                <span>📷</span><input type="file" id="photo2" name="photos" accept="image/*">
+                <span>📷</span><input type="file" id="photo2" name="photos" accept="image/* required" required>
             </div>
             <div class="image-upload">
-                <span>📷</span><input type="file" id="photo3" name="photos" accept="image/*">
+                <span>📷</span><input type="file" id="photo3" name="photos" accept="image/*" required>
             </div>
             <div class="image-upload">
-                <span>📷</span><input type="file" id="photo4" name="photos" accept="image/*">
+                <span>📷</span><input type="file" id="photo4" name="photos" accept="image/*" required>
             </div>
             <div class="image-upload">
-                <span>📷</span><input type="file" id="photo5" name="photos" accept="image/*">
+                <span>📷</span><input type="file" id="photo5" name="photos" accept="image/*" required>
             </div>
             
             <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required>
+            <input type="text" id="address" name="address" required maxlength="200">
+            <small>Minimum 150-200 words</small>
              
             <label for="address">District:</label>
             <input type="text" id="district" name="address" required>

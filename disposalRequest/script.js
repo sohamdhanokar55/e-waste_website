@@ -33,46 +33,43 @@ const db = getFirestore(app);
 
 
 
-const showAgencies=function(){
-    const agencyList=document.querySelector('.agencies');
+const showAgencies = function () {
+    const agencyList = document.querySelector('.agencies');
     agencyList.innerHTML = ''; 
     // Fetch all agencies from Firestore
     getDocs(collection(db, 'agencyLogin'))
         .then(snapshot => {
-            // Log the snapshot docs array
-            console.log('Snapshot docs:', snapshot.docs); // Log all docs to ensure we have access to them
+            console.log('Snapshot docs:', snapshot.docs);
 
             if (snapshot.empty) {
                 console.log('No agencies found.');
                 agencyList.innerHTML = '<p>No agencies found.</p>';
             } else {
-                // Loop through the docs array and log individual documents
                 snapshot.docs.forEach(doc => {
-                    console.log('Document ID:', doc.id); // Log document ID
+                    console.log('Document ID:', doc.id);
                     const agency = doc.data();
-                    console.log('Agency data:', agency); // Log the agency data
+                    console.log('Agency data:', agency);
 
                     if (agency.firstName && agency.stateName) {
+                        const profilePic = agency.profilePic || "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"; // Default if no image
+
                         const li = document.createElement('li');
-                        
-                        // li.classList.add('agency');
                         li.innerHTML = `
-                            <div class="card card-compact bg-base-100 w-96 shadow-xl" onclick="agencyDetails('${doc.id}')" >
-                            <figure>
-                                <img
-                                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                alt="Shoes" />
-                            </figure>
-                            <div class="card-body">
-                                <h2 class="card-title">${agency.firstName}</h2>
-                                <p id="agencyEmail">${agency.email}</p>
-                                <div class="card-actions justify-end">
-                                <button class="btn btn-primary" id="knowMore">Know More</button>
+                            <div class="card card-compact bg-base-100 w-96 shadow-xl" onclick="agencyDetails('${doc.id}')">
+                                <figure>
+                                    <img src="${profilePic}" alt="Agency Profile Picture" style="width: 100%; height: 200px; object-fit: cover;" />
+                                </figure>
+                                <div class="card-body">
+                                    <h2 class="card-title">${agency.firstName}</h2>
+                                    Email: <p id="agencyEmail">${agency.email}</p>
+                                    <p id="CityName">City: ${agency.cityName}</p>
+                                    <div class="card-actions justify-end">
+                                        <button class="know-more-button" id="knowMore">Know More</button>
+                                    </div>
                                 </div>
                             </div>
-                            </div>
-                       `;
-                        
+                        `;
+
                         agencyList.appendChild(li);
                     } else {
                         console.log('Missing required fields in agency document:', doc.id);
@@ -83,7 +80,9 @@ const showAgencies=function(){
         .catch(error => {
             console.error('Error fetching agencies: ', error);
         });
-}
+};
+
+
 
 // Show the single agency details
 window.agencyDetails= async(agencyId)=>{
@@ -221,47 +220,31 @@ window.agencyDetails= async(agencyId)=>{
                 const agency = doc.data();
                 const detailsDiv = document.getElementById('agencyDetails1');
                 detailsDiv.innerHTML = `
-                    <div class="section-1">
-          <div class="agency-name">
-             <h3 id="agencyName">${agency.firstName}</h3>
-          </div>
-          <div class="disposal-button">
-             <button class="select-btn" onclick="fetchFormAgencies('${agency.agencyId}')">Place Disposal Request</button>
-          </div> 
-        </div>
         <div class="section-2">
             <div class="Image-1-section">
               <div class="img-container">
                
               </div>
             </div>
+       
             <div class="Image-2-section">
-              <div class="img-container">
-               
-              </div>
-              <div class="img-container">
-               
-              </div>
-              <div class="img-container">
-                
-              </div>
-              <div class="img-container">
-                
-              </div>
-            </div>
-            <div class="Image-3-section">
-                <div class="description">
+                  <div class="description">
+                  <p id="agencyName" class="agency-name">${agency.firstName}</p>
                   <p><strong>State:</strong> ${agency.stateName}</p>
-                  <p><strong>Email:</strong></p><p id="agencyEmail">${agency.email}</p>
+                  <p id="agencyEmail"><strong>Email:</strong>${agency.email}</p>
                   <p><strong>Contact:</strong> ${agency.contact}</p>
-                </div>
+                  </div>
             </div>
-            <div class="Image-4-section">
+         </div>
+            <div class="Image-3-section">
                 <div class="mapping">
                     <div id="map"></div>
                 </div>
             </div>
-        </div>
+             <div class="disposal-button">
+             <button class="select-btn" onclick="fetchFormAgencies('${agency.agencyId}')">Place Disposal Request</button>
+             </div> 
+            
                 `;
             } else {
                 console.error('Agency not found.');
@@ -287,7 +270,7 @@ window.agencyDetails= async(agencyId)=>{
                     const eWasteAmount = document.getElementById('eWasteAmount').value;
                     const eWasteTypes = document.getElementById('eWasteTypes').value;
                     const agencyName=document.getElementById('agencyName').textContent;
-                    const agencyEmail=document.getElementById('agencyEmail').textContent;
+                    const agencyEmail = document.getElementById('agencyEmail').textContent.replace("Email: ", "").trim();
                     console.log(agencyEmail);
                     console.log(agencyName);
                     const selectedDate = document.querySelector('input[name="dates"]:checked');

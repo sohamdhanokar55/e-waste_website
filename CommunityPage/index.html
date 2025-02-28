@@ -9,35 +9,7 @@
 <body class="bg-gray-100 font-sans">
     <div class="flex flex-col md:flex-row h-screen">
     
-        <!-- Chat Section -->
-        <aside class="w-full md:w-1/4 bg-white p-6 shadow-lg border-t md:border-l border-gray-300 chat-section">
-            <h2 class="text-2xl font-bold mb-4 text-green-900">Real-Time Chat</h2>
-            <div id="chatBox" class="h-64 overflow-auto border border-gray-300 p-3 mb-3 bg-gray-50 rounded-lg shadow-sm"></div>
-            <div class="flex space-x-2">
-                <input id="chatInput" type="text" placeholder="Type a message..." class="flex-1 p-2 border border-gray-300 rounded-lg">
-                <button id="sendChat" class="bg-green-900 text-white px-4 py-2 rounded-lg">Send</button>
-            </div>
-        </aside>
-
-        <!-- Notifications -->
-        <aside class="w-full md:w-1/4 bg-white p-6 shadow-lg border-t md:border-l border-gray-300 notifications-section">
-            <h2 id="notificationHeading" class="text-2xl font-bold mb-4 text-green-900 cursor-pointer">Notifications</h2>
-            <div id="notificationPanel" class="bg-green-900 p-4 rounded-lg shadow-md max-h-60 overflow-auto">
-                <ul id="notificationList" class="space-y-2">
-                    <li class="text-white">No new notifications</li>
-                </ul>
-            </div>
-        </aside>
-
-        <!-- Groups Section -->
-        <aside class="w-full md:w-1/4 bg-white p-6 shadow-lg border-b md:border-r border-gray-300 groups-section">
-            <h2 class="text-2xl font-bold mb-4 text-green-900">Groups</h2>
-            <input id="groupNameInput" type="text" placeholder="Enter Group Name" class="w-full p-2 border border-gray-300 rounded-lg mb-2">
-            <button id="createGroupBtn" class="bg-green-900 text-white px-4 py-2 rounded-lg w-full mb-4">Create Group</button>
-            <ul id="groupList" class="space-y-3 text-gray-700"></ul>
-        </aside>
-
-        <!-- Community Feed -->
+         <!-- Community Feed -->
         <main class="w-full md:flex-1 p-6 community-feed-section">
             <h2 class="text-3xl font-bold mb-6 text-green-900">Community Feed</h2>
             <div class="mb-4">
@@ -49,6 +21,59 @@
             <div id="feed" class="space-y-6"></div>
         </main>
 
+        <!-- Groups Section -->
+        <aside class="w-full md:w-1/4 bg-white p-6 shadow-lg border-b md:border-r border-gray-300 groups-section">
+            <h2 class="text-2xl font-bold mb-4 text-green-900">Groups</h2>
+            <input id="groupNameInput" type="text" placeholder="Enter Group Name" class="w-full p-2 border border-gray-300 rounded-lg mb-2">
+            <button id="createGroupBtn" class="bg-green-900 text-white px-4 py-2 rounded-lg w-full mb-4">Create Group</button>
+            <ul id="groupList" class="space-y-3 text-gray-700"></ul>
+        </aside>
+
+
+        <!-- Chat Section -->
+         <aside class="w-full md:w-1/4 bg-white p-6 shadow-lg border-t md:border-l border-gray-300 chat-section">
+            <h2 class="text-2xl font-bold mb-4 text-green-900">Real-Time Chat</h2>
+            <div id="chatBox" class="h-64 overflow-auto border border-gray-300 p-3 mb-3 bg-gray-50 rounded-lg shadow-sm"></div>
+            <div class="flex space-x-2">
+                <input id="chatInput" type="text" placeholder="Type a message..." class="flex-1 p-2 border border-gray-300 rounded-lg">
+                <button id="sendChat" class="bg-green-900 text-white px-4 py-2 rounded-lg">Send</button>
+            </div>
+        </aside>
+
+        <!-- Notifications -->
+        <aside class="w-full md:w-1/4 bg-white p-6 shadow-lg border-t md:border-l border-gray-300 notifications-section">
+            <h2 id="notificationHeading" class="text-2xl font-bold mb-4 text-green-900 cursor-pointer">📣</span>Announcements</h2>
+            <div id="notificationPanel" class="bg-green-900 p-4 rounded-lg shadow-md max-h-60 overflow-auto">
+                <ul id="notificationList" class="space-y-2">
+                    <li class="text-white"></li>
+                </ul>
+            </div>
+            <div class="w-full max-w-3xl mx-auto p-4 space-y-4">
+                <!-- Announcement 1 -->
+                <a href="https://pehchaanlivefoundation.org/the-street-school.html" class="block bg-white p-4 shadow-md border rounded-lg hover:shadow-lg transition-shadow" target="_blank">
+                    <h2 class="text-lg font-bold mb-1">Event 1: Street School</h2>
+                    <p class="text-gray-700 mt-2">Pehchaan started its street school Education project for the Tribal, poor and orphans.</p>
+                </a>
+            
+                <!-- Announcement 2 -->
+                <a href="https://pehchaanlivefoundation.org/Pehchaan-health-care.html" class="block bg-white p-4 shadow-md border rounded-lg hover:shadow-lg transition-shadow" target="_blank">
+                    <h2 class="text-lg font-bold mb-1">Event 2: Medical Camp</h2>
+                    <p class="text-gray-700 mt-2">Pehchaan works at the grassroots to build healthy communities.</p>
+                </a>
+            
+                <!-- Announcement 3 -->
+                <a href="https://pehchaanlivefoundation.org/sport.html" class="block bg-white p-4 shadow-md border rounded-lg hover:shadow-lg transition-shadow" target="_blank">
+                    <h2 class="text-lg font-bold mb-1">Event 3: Sports</h2>
+                    <p class="text-gray-700 mt-2">Pehchaan empowers young women through sports, building confidence.</p>
+                </a>
+            
+                <!-- Add more events if needed -->
+            </div>
+        </aside>
+
+        
+
+        
     </div>
 
 <script type="module" src="firebase-config.js"></script>
