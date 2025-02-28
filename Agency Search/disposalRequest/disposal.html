@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency Disposal</title>
+    <link rel="stylesheet" href="disposal_style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Agency Details</h2>
+        <div id="agencyDetails">
+            <p><strong>Agency Name:</strong> <span id="agencyName">Loading...</span></p>
+            <p><strong>State:</strong> <span id="stateName">Loading...</span></p>
+            <p><strong>Email:</strong> <span id="agencyEmail">Loading...</span></p>
+            <p><strong>Contact:</strong> <span id="agencyContact">Loading...</span></p>
+        </div>
+
+        <h3>Agency Images</h3>
+        <div class="image-gallery" id="imageGallery">
+            <!-- Images will be loaded dynamically here -->
+        </div>
+
+        <h3>Schedule Disposal</h3>
+        <form id="disposalForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" required>
+
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <div id="dateForm"></div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script type="module" src="agency-search.js"></script>
+</body>
+</html>

@@ -35,6 +35,58 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+var timeline=`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Example</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 py-10">
+
+<div class="container mx-auto">
+    <h1 class="text-3xl font-bold text-center mb-8">Timeline</h1>
+    <div class="relative">
+        <div class="border-l-2 border-gray-300">
+            <!-- Timeline Item 1 -->
+            <div class="mb-8 ml-4">
+                <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2"></div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h2 class="font-semibold text-lg">Event Title 1</h2>
+                    <p class="text-gray-600">Description of the event that happened on this date.</p>
+                    <span class="text-gray-500 text-sm">Date: January 1, 2023</span>
+                </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="mb-8 ml-4">
+                <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2"></div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h2 class="font-semibold text-lg">Event Title 2</h2>
+                    <p class="text-gray-600">Description of the event that happened on this date.</p>
+                    <span class="text-gray-500 text-sm">Date: February 15, 2023</span>
+                </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="mb-8 ml-4">
+                <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-2"></div>
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h2 class="font-semibold text-lg">Event Title 3</h2>
+                    <p class="text-gray-600">Description of the event that happened on this date.</p>
+                    <span class="text-gray-500 text-sm">Date: March 10, 2023</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+`;
+
 
 
 // Ensure the user is logged in before showing profile
@@ -89,8 +141,8 @@ class isUserLogin {
     document.getElementById('display-email').textContent = data.email;
     document.getElementById('user-email').value = data.email;
 
-    document.getElementById('contact').value = data.contact || '';
-    document.getElementById('full-name').value = data.contact || '';
+    document.getElementById('contact').value = data.contactNumber || '';
+    document.getElementById('full-name').value = data.contactNumber || '';
     document.getElementById('full-name').value =
       `${data.firstName}` || '';
 
@@ -149,7 +201,7 @@ class isUserLogin {
               <p><strong>Agency Name:</strong> ${user.agencyName}</p>
               <p><strong>Address:</strong> ${user.address}</p>
               <p><strong>Email:</strong> ${user.email}</p>
-              <p><strong>Contact:</strong> ${user.contact}</p>
+              <p><strong>Contact:</strong> ${user.contactNumber}</p>
             </div>
             <button id="${user.id}" class='more-info' style="padding: 8px 12px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer;">
               More Info
@@ -169,12 +221,17 @@ class isUserLogin {
               const docRef = doc(db, 'disposalRequests', uid);
               const docSnap = await getDoc(docRef);
               const userModalData=document.createElement('div');
+              document.querySelector('.userMoal').innerHTML='';
+              userModalData.innerHTML='';
               userModalData.innerHTML=`
               <p><strong>Agency Name:</strong> ${user.agencyName}</p>
               <p><strong>Address:</strong> ${user.address}</p>
               <p>Email:<strong id='userEmailId'> ${user.email}</strong></p>
-              <p><strong>Contact:</strong> ${user.contact}</p>
+              <p><strong>Contact:</strong> ${user.contactNumber}</p>
+              $
               `;
+
+              
               document.querySelector('.userMoal').appendChild(userModalData);
               
 
@@ -202,15 +259,17 @@ class isUserLogin {
                   users1.push({ id: doc.id, ...doc.data() });
                 });
 
-                console.log("Retrieved Users:", users1);
+                console.log("Retrieved Users:", users1[0]);
 
-                userModalData.innerHTML=`<p><strong>Agency Name:</strong> ${user.agencyName}</p>
+                  
+                  userModalData.innerHTML=`<p><strong>Agency Name:</strong> ${user.agencyName}</p>
                   <p><strong>Address:</strong> ${user.address}</p>
-                  <strong>Email:</strong><div id='userEmailId'> ${user.email}</div>
-                  <p><strong>Contact:</strong> ${user.contact}</p>
-                  <p><strong>Pickup Status: </strong>${users1[0].schedulePickup}</p>`
-                            ;
-
+                  <strong>Email:</strong><div> ${user.email}</div>
+                  <p><strong>Contact:</strong> ${user.contactNumber}</p>
+                  <p><strong>Pickup Status: </strong>${users1[0].scheduleStatus}</p>
+                  <p>Pickup scheduled on-${users1[0].scheduleDate}
+                  ${timeline}`;
+                  
               } catch (error) {
                 console.error("Error fetching documents:", error);
               }          
@@ -228,10 +287,12 @@ class isUserLogin {
 
 // Class definition for isAgencyLogin
 class isAgencyLogin {
-  constructor() {
-    
-    
+
+  addBio(){`
+    `
+
   }
+  
 
   fetchUserData(userId) {
     console.log('hello');
@@ -349,23 +410,10 @@ class isAgencyLogin {
               const modal = document.getElementById('schedulePopup');
               modal.style.display='flex';
               const closeModalBtn = document.getElementById('closePopupBtn');
-              const pickupOption = document.getElementById('pickupChoice');
-              const calendarSection = document.getElementById('calendarContainer');
-
-              // Display calendar
+              
               closeModalBtn.addEventListener('click', () => {
                 modal.style.display = 'none';
               });
-              // Show or hide calendar based on dropdown selection
-              pickupOption.addEventListener('change', () => {
-                if (pickupOption.value === 'schedule') {
-                  calendarSection.style.display = 'block';
-                } else {
-                  calendarSection.style.display = 'none';
-                }
-              });
-              // Ends
-
               const uid = event.target.getAttribute('id');
               const docRef = doc(db, 'disposalRequests', uid);
               const docSnap = await getDoc(docRef);
@@ -375,31 +423,30 @@ class isAgencyLogin {
               console.log(uid);
               const orderList1 = document.createElement('div');
               orderList1.innerHTML = `<div>
-    <p><strong>User Name:</strong> ${user.name}</p>
-    <p><strong>Address:</strong> ${user.address}</p>
-    <p>Email:<strong id='userEmail'> ${user.email}</p>
-    <p><strong>Contact:</strong> ${user.contact}</p>
-  </div>`;
-              console.log(orderList1);
+              <p><strong>User Name:</strong> ${user.name}</p>
+              <p><strong>Address:</strong> ${user.address}</p>
+              <p>Email:<strong id='userEmail'> ${user.email}</p>
+              <p><strong>Contact:</strong> ${user.contact}</p>
+              <p>Schedule Requested:<div id="date"> ${user.scheduleDisposal}</div></p>
+              <p>Assign PickupAgent: <p>
+              
+              </div>`;
               document.querySelector('.showDisposal').appendChild(orderList1);
 
 
               // Save button pressed
-              const saveBtn=document.getElementById('saveModalBtn')
-              saveBtn.addEventListener('click',function async(){
+              const approve=document.querySelector('.approved')
+              approve.addEventListener('click',function async(){
               const email=document.getElementById('userEmail').textContent;
-              let schedulePickup=document.getElementById('pickupDate').value;
-              schedulePickup=schedulePickup===''?'Pending':schedulePickup;
-                console.log(email);
+              const date=document.getElementById('date').textContent;
                 addDoc(collection(db, "pickupTimeline"), {
                   userEmail:email,
-                  schedulePickup: schedulePickup,
+                  scheduleStatus: "Request Approved",
+                  scheduleDate: date,
                   timestamp: serverTimestamp()
               })
               .then(() => {
-                  alert("Timeline saved successfully!"); // Alert message after saving
-              
-                  // Hide form after saving
+                  alert("Request Approved successfully!"); // Alert message after saving
                   document.getElementById("schedulePopup").style.display = "none";
               
                   // Change button text to "Edit Timeline"
@@ -422,7 +469,11 @@ class isAgencyLogin {
                 if (isconfirm) {
                   const uid = event.target.getAttribute('id');
                   const docRef = doc(db, 'disposalRequests', uid);
-                  await deleteDoc(docRef);
+                  await deleteDoc(docRef).then(()=>{
+                    alert('Deleted Successfully');
+                    location.reload();
+                  });
+
                 }
               } catch (err) {
                 console.error(err);

@@ -33,7 +33,6 @@
           <input type="email" id="rEmail" placeholder="Email" required />
           <label for="rEmail">Email</label>
         </div>
-
         <!-- New Contact Field -->
         <div class="input-group">
           <i class="fas fa-phone"></i>
@@ -52,16 +51,35 @@
           <label for="rPassword">Password</label>
         </div>
 
+        <div class="input-group">
+          <i class="fas fa-house"></i>
+          <input
+            type="text"
+            id="district"
+            placeholder="District"
+            required
+          />
+          <label for="district">District</label>
+        </div>
+    
         <button class="btn" id="submitSignUp">Sign Up</button>
       </form>
-
+      
       <div class="links">
         <p>Already Have Account ?</p>
         <button id="signInButton">Log In</button>
       </div>
     </div>
-
-    <div class="container" id="signIn">
+    <div class="main-container" id="signIn">
+        <div class="steps">
+        <p>Steps to Disposal</p>
+        <ul>
+        <li>Login/SignUp</li>
+        <li>Fill in details in Dashboard</li>
+        <li>Find the most suitable Agency and dispose your E-waste</li>
+      </ul>
+    </div>
+    <div class="container">
       <h1 class="form-title">Login In</h1>
       <form method="post" action="">
         <div id="signInMessage" class="messageDiv" style="display: none"></div>
@@ -98,7 +116,7 @@
         <i class="fab fa-google" id="googleSignInButton"></i>
       </div>
     </div>
-
+    </div>
     <script type="module" src="userScript.js"></script>
     <script type="module" src="userLogin.js"></script>
   </body>

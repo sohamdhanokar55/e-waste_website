@@ -1,0 +1,69 @@
+body{
+    margin:50px;
+}
+.section-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .agency-name>h3{
+    font-size: 45px;
+    margin:0;
+  }
+  .section-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 100%;
+    height: 800px;
+    background-color: #fff;
+    max-width: 95%;
+  }
+  .Image-1-section{
+    width:100%;
+    height: 100%;
+  }
+  img{
+    border-radius: 5%;
+    border: 1px solid black;
+  }
+  .img-container{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .Image-2-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    width:100%;
+    gap:10px;
+    height: 100%;
+  }
+  .img-heading{
+    color: white;
+    font-size: 40px;
+  }
+  .img-container>img{
+    width: 100%;
+    height: 100%;
+  }
+  .Image-3-section,.Image-4-section{
+    width: 100%;
+    height: auto;
+  }
+  .description{
+    font-size:25px;
+  }
+  .select-btn{
+    background-color: green;
+    color: #fff;
+    padding: 10px;
+    width: 200px;
+  }

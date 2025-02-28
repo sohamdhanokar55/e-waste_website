@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency List</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <style>
+       .agencies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between cards */
+    justify-content: center; /* Center content horizontally */
+    align-items: start; /* Align cards at the top */
+    padding: 20px;
+}
+#map {
+            height: 20vh;
+            width: 100%;
+            border: 1px solid black;
+            margin: 10px,10px,10px,10px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+
+    <div class="agencies"></div>
+    <div class="agencyDetials"></div>  
+    <div id="agencyDetails1"></div>
+    <div id="dateForm"></div>
+
+   
+    
+    <!-- <script type="module" src="maps.js" defer></script> -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script type="module" src="script.js" defer></script>
+</body>
+</html>

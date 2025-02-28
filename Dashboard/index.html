@@ -6,7 +6,8 @@
     <title>Profile Page</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body> 
       <div id="navbar">
@@ -100,18 +101,14 @@
           <div class="popup" id="schedulePopup">
             <div class="popup-container">
               <div class="showDisposal"></div>
-              <h3>Schedule Pickup</h3>
-              <label for="pickupChoice">Choose an option:</label>
-              <select id="pickupChoice">
-                <option value="pending">Pending</option>
-                <option value="schedule">Schedule</option>
+             
               </select>
               
               <div class="popup-calendar" id="calendarContainer">
                 <label for="pickupDate">Select a date:</label>
                 <input type="date" id="pickupDate" />
               </div>
-              <button id="saveModalBtn">Save</button>
+              <button class="approved" style="background-color: green;">Approve Request</button>
               <button id="closePopupBtn">Close</button>
             </div>
           </div>
@@ -132,6 +129,60 @@
         </div>
       </div>
     </div>
+
+ 
+    <div class="section-2">
+      <div class="Image-1-section">
+          <div class="img-container">
+              <label class="upload-container">
+                (Add an image)<br>+<br>(472x396)
+                  <input type="file" accept="image/*" onchange="uploadImage(this)">
+              </label>
+              <img src="" class="uploaded-image">
+              <button class="edit-button" onclick="editImage(this)">Edit</button>
+          </div>
+      </div>
+      <div class="Image-2-section">
+          <div class="img-container">
+              <label class="upload-container">
+                (Add an image)<br>+<br>(229x215)
+                  <input type="file" accept="image/*" onchange="uploadImage(this)">
+              </label>
+              <img src="" class="uploaded-image">
+              <button class="edit-button" onclick="editImage(this)">Edit</button>
+          </div>
+          <div class="img-container">
+              <label class="upload-container">
+                  (Add an image)<br>+<br>(229x215)
+                  <input type="file" accept="image/*" onchange="uploadImage(this)">
+              </label>
+              <img src="" class="uploaded-image">
+              <button class="edit-button" onclick="editImage(this)">Edit</button>
+          </div>
+          <div class="img-container">
+              <label class="upload-container">
+                (Add an image)<br>+<br>(229x215)
+                  <input type="file" accept="image/*" onchange="uploadImage(this)">
+              </label>
+              <img src="" class="uploaded-image">
+              <button class="edit-button" onclick="editImage(this)">Edit</button>
+          </div>
+          <div class="img-container">
+              <label class="upload-container">
+                (Add an image)<br>+<br>(229x215)
+                  <input type="file" accept="image/*" onchange="uploadImage(this)">
+              </label>
+              <img src="" class="uploaded-image">
+              <button class="edit-button" onclick="editImage(this)">Edit</button>
+          </div>
+      </div>
+  </div>
+  
+  <button id="saveImages" disabled>Save Images</button>
+  
+
     <script type="module" src="profile-script.js"></script>
+
+    <script type="module" src="app.js"></script>
   </body>
 </html>

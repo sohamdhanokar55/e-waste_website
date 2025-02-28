@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="marketplace.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body>  
+    <header>
+    <div id="navbar">
+        <script>
+            fetch('navbar.html')
+              .then(response => response.text())
+              .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+              })
+              .catch(error => console.error('Error loading the navbar:', error));
+          </script>
+    </div>
+    </header>
+
+    <div class="marketplace-head">
+    
+        <select class="select select-bordered w-full max-w-xs">
+            <option selected>All districts</option>
+            <option>Ahmednagar</option>
+            <option>Akola</option>
+            <option>Amravati</option>
+            <option>Aurangabad</option>
+            <option>Beed</option>
+            <option>Bhandara</option>
+            <option>Buldhana</option>
+            <option>Chandrapur</option>
+            <option>Dhule</option>
+            <option>Gadchiroli</option>
+            <option>Gondia</option>
+            <option>Hingoli</option>
+            <option>Jalgaon</option>
+            <option>Jalna</option>
+            <option>Kolhapur</option>
+            <option>Latur</option>
+            <option>Mumbai City</option>
+            <option>Mumbai Suburban</option>
+            <option>Nagpur</option>
+            <option>Nanded</option>
+            <option>Nandurbar</option>
+            <option>Nashik</option>
+            <option>Osmanabad</option>
+            <option>Palghar</option>
+            <option>Parbhani</option>
+            <option>Pune</option>
+            <option>Raigad</option>
+            <option>Ratnagiri</option>
+            <option>Sangli</option>
+            <option>Satara</option>
+            <option>Sindhudurg</option>
+            <option>Solapur</option>
+            <option>Thane</option>
+            <option>Wardha</option>
+            <option>Washim</option>
+            <option>Yavatmal</option>
+
+          </select>
+    <select class="select select-bordered w-full max-w-xs">
+      <option selected>All Categories</option>
+      <option>Mobile & Gadgets</option>
+      <option>Home Appliances</option>
+      <option>TV & Entertainment</option>
+      <option>Computers & Accessories</option>
+      <option>Office & Industrial Devices</option>
+      <option>Batteries & Power Devices</option>
+      <option>Other Electronics</option>
+    </select>
+    <div>
+      <a class="sell-button" href="selling-form.html" target="_blank">
+      <i class="fas fa-plus"></i> Sell
+      </a>
+      <a class="sell-button" href="requestbuy.html" target="_blank">
+        <i class="fas fa-plus"></i> Order
+        </a>
+     </div>
+    </div>
+<div class="product-grid">  
+          <div class="card">
+            <img src="Images/article1.jpg" alt="Green Shoe" class="product-image">
+            <h3 class="product-title">Wireless Headphones</h3>
+            <div class="card-footer">
+                <p class="product-price">₹<span>1,499</span></p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="Images/article1.jpg" alt="Green Shoe" class="product-image">
+            <h3 class="product-title">Wireless Headphones</h3>
+            <div class="card-footer">
+                <p class="product-price">₹<span>1,499</span></p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="Images/article1.jpg" alt="Green Shoe" class="product-image">
+            <h3 class="product-title">Wireless Headphones</h3>
+            <div class="card-footer">
+                <p class="product-price">₹<span>1,499</span></p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="Images/article1.jpg" alt="Green Shoe" class="product-image">
+            <h3 class="product-title">Wireless Headphones</h3>
+            <div class="card-footer">
+                <p class="product-price">₹<span>1,499</span></p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="Images/article1.jpg" alt="Green Shoe" class="product-image">
+            <h3 class="product-title">Wireless Headphones</h3>
+            <div class="card-footer">
+                <p class="product-price">₹<span>1,499</span></p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="Images/article1.jpg" alt="Green Shoe" class="product-image">
+            <h3 class="product-title">Wireless Headphones</h3>
+            <div class="card-footer">
+                <p class="product-price">₹<span>1,499</span></p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="Images/article1.jpg" alt="Green Shoe" class="product-image">
+            <h3 class="product-title">Wireless Headphones</h3>
+            <div class="card-footer">
+                <p class="product-price">₹<span>1,499</span></p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="Images/article1.jpg" alt="Green Shoe" class="product-image">
+            <h3 class="product-title">Wireless Headphones</h3>
+            <div class="card-footer">
+                <p class="product-price">₹<span>1,499</span></p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="Images/article1.jpg" alt="Green Shoe" class="product-image">
+            <h3 class="product-title">Wireless Headphones</h3>
+            <div class="card-footer">
+                <p class="product-price">₹<span>1,499</span></p>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+          </div>
+          
+ <script type = "module" src = "marketplace.js"></script>         
+</div>
+</body>
+</html>

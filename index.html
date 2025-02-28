@@ -18,102 +18,73 @@
 </head>
 <body>
     <div id="navbar">
-        <script>
-            fetch('navbar.html')
-              .then(response => response.text())
-              .then(data => {
-                document.getElementById('navbar').innerHTML = data;
-              })
-              .catch(error => console.error('Error loading the navbar:', error));
-          </script>
+      <script>
+        fetch('navbar.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+          })
+          .catch(error => console.error('Error loading the navbar:', error));
+      </script>
     </div>
     <section>
-        <hr class="divider">
         <div class="main-container" data-aos="zoom-in">
-        <div class="background-container">
-            <div class="overlay"></div>
-            <div class="content">
-                
-                        <p style="margin-bottom: 50px;">"Take the first step towards,<br>responsible e-cycling."</p>
-                        <a>
-                         <span class="learn" id="main-button" data-modal-target="#modal">Get Started</span>
-                        </a>
+          <div class="heading">
+            <div class="quote">
+               <p>"Recycle e-waste, revive the planet"</p>
+               <p class="choose">Choose Your Role</p>
             </div>
-        </div>
-        </div>
-    </section>
-    <section>
-        <div class="modal" id="modal">
-            <div class="modal-header">
-              <div class="title">Choose Your Role</div>
-              <button data-close-button class="close-button">&times;</button>
-            </div>
-            <div class="modal-body">
-              <div class="option">
-                <a class="citizen-option" href="Login/userLogin.html" target="_blank">
-                    <i class="fa-solid fa-user" style="color: #96F522;"></i>
-                    <p style="color: #fff;">Citizen</p>
+            <div class="option">
+               <a class="citizen-option" href="Login/userLogin.html" target="_blank">
+                <i class="fa-solid fa-user" style="color:#ffffff"></i>
+                <p style="color: #ffffff; ">Citizen</p>
                 </a>
                 <a class="agency-option" href="Login/agencyLogin.html" target="_blank">
-                    <i class="fa-solid fa-building" style="color: #96F522;"></i>
-                    <p style="color: #fff;">Agency</p>
+                <i class="fa-solid fa-building" style="color: #ffffff;"></i>
+                <p style="color: #ffffff;">Agency</p>
                 </a>
-                <a class="agency-option" href="Login/agencyLogin.html" target="_blank">
-                  <i class="fas fa-people-group" style="color: #96F522;"></i>
-                  <p style="color: #fff;">Volunteer</p>
-              </a>
-              </div>
+                <a class="agency-option" href="Login/volunteerLogin.html" target="_blank">
+                <i class="fas fa-people-group" style="color:#ffffff;"></i>
+                <p style="color: #ffffff;">Volunteer</p>
+                 </a>
+                 <a class="agency-option" href="Login/estoreLogin.html" target="_blank">
+                  <i class="fa-solid fa-store" style="color:#ffffff;"></i>
+                  <p style="color: #ffffff;">E-Store</p>
+                 </a>
             </div>
           </div>
-          <div id="overlay"></div>
+        </div>
+    </section>
         <div class="section-2" data-aos="fade-right">
-            <h1 class="section-heading">Simplifying E-Waste Recycling for Everyone!</h1>
-            <hr class="dash">
-            <p>E-waste is a growing environmental problem, and improper disposal harms our planet. Our platform connects you with verified e-waste agencies, lets you track your waste, and even rewards you for responsible recycling. 
-            </p>
             <h1 class="section-heading">What do we offer??</h1>
-            <hr class="dash">
             <div class="key-features">
                 <div class="feature"> 
-                    <i class="fas fa-shopping-cart" style="color:#96F522;; font-size: 45px;"></i>
+                    <i class="fas fa-shopping-cart" style="color:#00A550; font-size: 45px;"></i>
                     <p>E-Waste Marketplace</p>
                 </div>   
                 <div class="feature">
-                    <i class="fas fa-gift" style="color: #96F522;; font-size:45px;"></i>
+                    <i class="fas fa-gift" style="color: #00A550; font-size:45px;"></i>
                     <p>Rewards System</p>
                 </div>
              
                 <div class="feature">
-                    <i class="fas fa-check-circle" style="color:#96F522;; font-size: 45px;"></i>
+                    <i class="fas fa-check-circle" style="color:#00A550; font-size: 45px;margin-top:20px;"></i>
                     <p>Verified Recycling Partners</p>
                 </div>
                 
                 <div class="feature">
-                    <i class="fas fa-users" style="color:#96F522;; font-size: 45px;"></i>
+                    <i class="fas fa-users" style="color:#00A550; font-size: 45px;"></i>
                     <p>Community Forum</p>
                 </div>
-                
-        </div>
-        </div>
-            <div class="recycling-process" data-aos="fade-right">
-                <div class=img-text>
-                <h1 style="font-size: 60px; color:#96F522">Recycling Process</h1>
-                <hr class="dash">
-                </div>
-                <div class="img-process">
-                <img src="Images/infographic.jpg">
-                </div>
             </div>
-    </section>
+        </div>
     <section>
-        <div style="margin-left: 0px; margin-right: 0px;">
         <div class="section-3" data-aos="zoom-right">
             <h1 class="section-heading">Events</h1>
-            <hr class="dash">
           <div class="first-event">
               <div class="first-image">
                 <img src="Images/firstevent.jpg" onclick="window.open('https://pehchaanlivefoundation.org/the-street-school.html', '_blank');" style="cursor: pointer;">
-
+                                                                                 
               </div>
               <div class="first-text"> 
                 <h1>Street School</h1>
@@ -126,7 +97,7 @@
             <div class="second-text"> 
                 <h1>Medical Camp</h1>
                 <p>
-                    Pehchaan  is working at the grassroots level towards building healthy communities which would meet the achievement of the Millennium Development Goals as well as contribute to poverty reduction. Through the support of the donors, they have been implementing projects to cater to children’s various needs, making their childhood happier and more fulfilling. They are working relentlessly to give children a chance at building a brighter future and in this quest, every bit of support counts.
+                  Pehchaan works at the grassroots to build healthy communities and reduce poverty. With donor support, they create projects to make childhood happier and more fulfilling. Their efforts give children a chance at a brighter future. Every bit of support counts.
                 </p>
             </div>
             <div class="second-image">
@@ -142,8 +113,7 @@
                 <div class="first-text"> 
                   <h1>Sports</h1>
                   <p>
-                    To help young women realize the ideals of womanhood and prepare themselves for the responsibilities in the home, the nation and the global community, Pehchaan have their sports facility.  Women Sports provide a platform that gives courage and confidence, and lays the foundation of women of strong characters who can be a productive part of the society.
-                    They strive to support the girls from financially disadvantaged background to tap their undiscovered potential and become world-class sportspersons.
+                    Pehchaan empowers young women through sports, building confidence and strong character. Their facility helps girls prepare for roles at home, in the nation, and globally. They support financially disadvantaged girls to unlock their potential. The goal is to shape world-class sportspersons.
                   </p>
               </div>
             </div>

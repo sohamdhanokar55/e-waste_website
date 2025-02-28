@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Tokens System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="e-tokens.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.0/dist/full.css" rel="stylesheet">
+</head>
+<body class="p-6 max-w-4xl mx-auto bg-gray-100">
+    
+    <!-- E-Wallet Section -->
+    <div class="bg-base-200 p-4 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold mb-2">E-Wallet Balance</h2>
+        <p id="eWalletBalance" class="text-lg font-bold">Loading...</p>
+    </div>
+
+    <!-- Confirm & Redeem Buttons -->
+    <button id="confirmBtn" class="btn btn-primary mt-4">Confirm & Earn 400 E-Tokens</button>
+    <button id="redeemBtn" class="btn btn-secondary mt-4">Redeem 500 E-Tokens</button>
+
+    <!-- Modal Popup -->
+    <div id="modalPopup" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg relative">
+            <h2 class="text-lg font-semibold">🎉 You received 400 E-Tokens!</h2>
+        </div>
+    </div>
+
+    <!-- Leaderboard Section -->
+    <div class="mt-6">
+        <h2 class="text-xl font-semibold mb-2">Leaderboard</h2>
+        <div class="bg-base-200 p-4 rounded-lg shadow-lg" id="leaderboard">
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Progress & Badges Section -->
+    <div class="mt-6">
+        <h2 class="text-xl font-semibold mb-2">Progress</h2>
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div id="badgesContainer" class="badges-container"></div>
+    </div>
+
+    <script type="module" src="e-tokens.js"></script>
+</body>
+</html>

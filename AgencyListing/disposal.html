@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disposal</title>
+    <link rel="stylesheet" href="disposal_style .css">
+</head>
+<body>
+    <div class="section-1">
+        <div class="agency-name">
+           <h3 id="agencyName">JAYBHIM</h3>
+        </div>
+        <div>
+        </div> 
+      </div>
+        <div class="section-2">
+              <div class="Image-1-section">
+                <div class="img-container">
+                <img src="" placeholder="">
+              </div>
+              </div>
+              <div class="Image-2-section">
+                <div class="img-container">
+                  <img src="">
+                </div>
+                <div class="img-container">
+                  <img src="">
+                </div>
+                <div class="img-container">
+                  <img src="">
+                </div>
+                <div class="img-container">
+                  <img src="">
+                </div>
+              </div>
+              <div class="Image-3-section">
+                  <div class="description">
+                    <p><strong>State:</strong></p>
+                    <p><strong>Email:</strong></p><p id='agencyEmail'></p>
+                    <p><strong>Contact:</strong></p>
+                  </div>
+                  <div>
+                  <button class="select-btn">Place Disposal Request</button>
+                </div>
+              </div>
+              <div class="Image-4-section">
+                  <div class="mapping">
+                  <div id="map"></div>
+                  </div>
+              </div>
+          </div>
+          <script type="module" src="agency-search.js"></script>
+          <script type="module" src="maps.js"></script>
+</body>
+</html>
+
+        // Populate the disposal page with agency details
+        document.addEventListener("DOMContentLoaded", () => {
+            const agencyDetails = getQueryParams();
+
+            document.getElementById('agencyName').textContent = agencyDetails.firstName;
+            document.getElementById('stateName').textContent = agencyDetails.stateName;
+            document.getElementById('agencyEmail').textContent = agencyDetails.email;
+            document.getElementById('agencyContact').textContent = agencyDetails.contact;
+        });
+    </script>
+
+    <script type="module" src="agency-search.js"></script>
+    <script type="module" src="maps.js"></script>
+</body>
+</html>

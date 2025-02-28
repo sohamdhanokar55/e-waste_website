@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+  }
+  body {
+    background: linear-gradient(to right, #ffffff, #A7C957);
+  }
+  .container {
+    background: #fff;
+    width: 550px;
+    padding: 1.5rem;
+    margin: 50px auto;
+    margin-top:100px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-left: 0;
+    box-shadow: 
+          0px -4px 15px rgba(0, 0, 0, 0.3), /* Top */
+          4px 0px 15px rgba(0, 0, 0, 0.3),  /* Right */
+          0px 4px 15px rgba(0, 0, 0, 0.3);  /* Bottom */
+  }
+  form {
+    margin: 0 2rem;
+  }
+  .form-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+  input {
+    color: inherit;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #757575;
+    padding-left: 1.5rem;
+    font-size: 15px;
+  }
+  .input-group {
+    padding: 1% 0;
+    position: relative;
+  }
+  .input-group i {
+    position: absolute;
+    color: black;
+  }
+  input:focus {
+    background-color: transparent;
+    outline: transparent;
+    border-bottom: 2px solid #A7C957;
+  }
+  input::placeholder {
+    color: transparent;
+  }
+  
+  .input-group .toggle-password {
+    position: absolute;
+    right: 12px;  
+    top: -5px; 
+    cursor: pointer;
+    color: #757575;
+  }
+  
+  .input-group .toggle-password:hover {
+    color: #A7C957;
+  }
+  
+  label {
+    color: #757575;
+    position: relative;
+    left: 1.2em;
+    top: -1.3em;
+    cursor: auto;
+    transition: 0.3s ease all;
+  }
+  input:focus ~ label,
+  input:not(:placeholder-shown) ~ label {
+    top: -3em;
+    color: #A7C957;
+    font-size: 15px;
+  }
+  .recover {
+    text-align: right;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .recover a {
+    text-decoration: none;
+    color: #A7C957;
+  }
+  .recover a:hover {
+    color: rgb(11, 89, 8);
+    text-decoration: underline;
+  }
+  button {
+    font-size: 1.1rem;
+    padding: 8px 0;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 100%;
+    background-color: #A7C957; 
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.9s;
+  }
+  button:hover {
+    background: black;
+  }
+  .or {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  .icons {
+    text-align: center;
+  }
+  .icons i {
+    color: #A7C957;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 2px solid #dfe9f5;
+    margin: 0 15px;
+    transition: 1s;
+  }
+  .icons i:hover {
+    background: #07001f;
+    font-size: 1.6rem;
+    border: 2px solid rgb(11, 89, 8);
+  }
+  .links {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 4rem;
+    margin-top: 0.9rem;
+    font-weight: bold;
+  }
+  #signUpButton,
+  #signInButton {
+    color: #A7C957;
+    border: 10em;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: 900;
+  }
+  #signUpButton:hover,
+  #signInButton:hover {
+    text-decoration: underline;
+    color: #A7C957;
+  }
+  .messageDiv {
+    background-color: #A7C957;
+    color: black;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    opacity: 0;
+    animation: fadeOut 7s forwards;
+  }
+  .steps{
+    background: #fff;
+    width: 450px;
+    padding: 1.5rem;
+    margin: 50px auto;
+    margin-top:100px;
+    margin-right: 0;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: #A7C957;
+    color: #ffffff;
+    box-shadow: 
+          0px -4px 8px rgba(0, 0, 0, 0.3),  /* Top */
+          -4px 0px 8px rgba(0, 0, 0, 0.3),  /* Left */
+          0px 4px 8px rgba(0, 0, 0, 0.3);   /* Bottom */
+  }
+  .steps>p{
+    font-size: 40px;
+    font-weight: 800;
+    margin-left: 10px;
+    
+  }
+  ul{
+    list-style-type:disc;
+  }
+  .steps>ul{
+    font-size: 25px;
+    margin-top:20px;
+    margin-left: 30px;
+  }
+  .steps>ul>li{
+    margin-bottom: 30px;
+  }
+  .main-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    
+  }

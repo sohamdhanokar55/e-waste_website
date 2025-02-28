@@ -4,11 +4,17 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup
 } from 'https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js';
 import {
   getFirestore,
   doc,
   setDoc,
+  query,
+  where,
+  getDocs,
+  collection
 } from 'https://www.gstatic.com/firebasejs/11.3.0/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -45,6 +51,7 @@ signUp.addEventListener('click', event => {
   const firstName = document.getElementById('fName').value;
   const lastName = document.getElementById('lName').value;
   const contactNumber = document.getElementById('contact').value; // New Contact Field
+  const district = document.getElementById('district').value;
 
   createUserWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
@@ -53,7 +60,8 @@ signUp.addEventListener('click', event => {
         email, 
         firstName, 
         lastName, 
-        contactNumber // Save Contact Number
+        contactNumber,
+        district 
       };
 
       showMessage('Account Created Successfully', 'signUpMessage');
@@ -75,30 +83,67 @@ signUp.addEventListener('click', event => {
 
 // Sign-In Functionality
 const signIn = document.getElementById('submitSignIn');
-signIn.addEventListener('click', event => {
+signIn.addEventListener('click', async event => {
   event.preventDefault();
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {
-      const user = userCredential.user;
-      showMessage('Login is successful', 'signInMessage');
+  try {
+    // Check if email exists in Firestore before authenticating
+    const userQuery = query(collection(db, 'userLogin'), where('email', '==', email));
+    const querySnapshot = await getDocs(userQuery);
+
+    if (querySnapshot.empty) {
+      showMessage('Email not registered. Please sign up first.', 'signInMessage');
+      return; // Stop further execution if email does not exist
+    }
+
+    // Proceed with Firebase authentication
+    await signInWithEmailAndPassword(auth, email, password);
+    showMessage('Login is successful', 'signInMessage');
+    localStorage.setItem('loggedInUserId', auth.currentUser.uid);
+    window.location.href = '../index.html';
+
+  } catch (error) {
+    if (error.code === 'auth/invalid-credential') {
+      showMessage('Incorrect password. Please try again.', 'signInMessage');
+    } else if (error.code === 'auth/invalid-email') {
+      showMessage('Invalid email format. Please enter a valid email.', 'signInMessage');
+    } else {
+      showMessage('Login failed. Please check your email and password.', 'signInMessage');
+    }
+  }
+});
+
+
+
+// Google Login Functionality
+const googleSignInButton = document.getElementById('googleSignInButton');
+googleSignInButton.addEventListener('click', () => {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+    .then(result => {
+      const user = result.user;
+      const userData = {
+        email: user.email,
+        firstName: user.displayName.split(' ')[0],
+        lastName: user.displayName.split(' ')[1] || '',
+        contactNumber: '', 
+        district: '',
+      };
+
+      showMessage('Login with Google is successful', 'signInMessage');
       localStorage.setItem('loggedInUserId', user.uid);
-      window.location.href = '../index.html';
+      setDoc(doc(db, 'userLogin', user.uid), userData, { merge: true })
+        .then(() => {
+          window.location.href = '../index.html';
+        })
+        .catch(err => {
+          showMessage('Error saving user data', 'signInMessage');
+        });
     })
     .catch(error => {
-      if (error.code === 'auth/user-not-found') {
-        showMessage('Email not registered. Please sign up first.', 'signInMessage');
-      } else if (error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') {
-        showMessage('Incorrect password. Please try again.', 'signInMessage');
-      } else if (error.code === 'auth/invalid-email') {
-        showMessage('Invalid email format. Please enter a valid email.', 'signInMessage');
-      } else if (error.code === 'auth/too-many-requests') {
-        showMessage('Too many failed attempts. Please try again later.', 'signInMessage');
-      } else {
-        showMessage('Login failed. Please check your credentials.', 'signInMessage');
-      }
+      showMessage('Google Login failed', 'signInMessage');
     });
 });
 

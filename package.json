@@ -2,5 +2,8 @@
   "type": "module",
   "dependencies": {
     "firebase": "^11.2.0"
+  },
+  "devDependencies": {
+    "daisyui": "^4.12.23"
   }
 }

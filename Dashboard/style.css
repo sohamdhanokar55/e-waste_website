@@ -1,8 +1,15 @@
   body {
     background-color: black;
     min-height: 100vh;
-    margin: 0;
     font-family: Arial, sans-serif;
+  }
+  * {
+    box-sizing: border-box; /* Ensures padding and border are included in width/height */
+    margin: 0;
+    padding: 0;
+    }
+  html,body{
+    overflow-x: hidden;
   }
   .separate{
     width: 100%;
@@ -333,3 +340,127 @@
     object-fit: cover;
     cursor: pointer;
   }
+  .upload-container {
+    width: 120px;
+    height: 120px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    font-size: 40px;
+    color: #888;
+}
+
+.upload-container input {
+    display: none;
+}
+.agency-image-upload{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.section-2 {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  max-width: 95%;
+  margin: 20px auto;
+  height: 400px;
+}
+
+.Image-1-section, .Image-2-section {
+  flex: 1;  /* Allow both sections to grow equally */
+  height: 100%;
+  display: flex;
+}
+
+.Image-1-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-container {
+  flex-grow: 1;  /* Allow image container to fill the section */
+  width: 100%;
+  height: 100%;
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.Image-2-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Ensures the image covers the container */
+  display: block;
+}
+
+.edit-button {
+  display: none;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.img-container:hover .edit-button {
+  display: block;  /* Show edit button on hover */
+}
+.upload-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8); /* Light background to make it visible */
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #555;
+  cursor: pointer;
+  border: 2px dashed #ccc;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Ensure input fully covers the upload container */
+.upload-container input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Hide upload button when image is uploaded */
+.img-container img.uploaded-image[src] + .upload-container {
+  display: none;
+}

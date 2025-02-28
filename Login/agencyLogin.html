@@ -17,7 +17,7 @@
         <div id="signUpMessage" class="messageDiv" style="display: none"></div>
         <div class="input-group">
           <i class="fas fa-user"></i>
-          <input type="text" id="aName" placeholder="agencyName" required />
+          <input type="text" id="aName" placeholder="Agency Name" required />
           <label for="fname">Agency Name</label>
         </div>
         <div class="input-group">
@@ -25,7 +25,7 @@
           <input
             type="text"
             id="contact"
-            placeholder="Contact Numeber"
+            placeholder="Contact Number"
             required
           />
           <label for="contact">Contact</label>
@@ -45,17 +45,21 @@
           />
           <label for="rPassword">Password</label>
         </div>
-
         <div class="input-group">
           <i class="fa-solid fa-house"></i>
-          <input type="text" id="district" placeholder="District" required />
-          <label for="district">Distrcit</label>
+          <input type="text" id="state" placeholder="State" required />
+          <label for="state">State</label>
         </div>
+        <div class="input-group">
+          <i class="fa-solid fa-building"></i>
+          <input type="text" id="city" placeholder="City" required />
+          <label for="city">City</label>
+        </div>
+        
         <button class="btn" id="submitSignUp">Sign Up</button>
       </form>
-
       <div class="links">
-        <p>Already Have Account ?</p>
+        <p>Already Have an Account?</p>
         <button id="signInButton">Sign In</button>
       </div>
     </div>
@@ -80,17 +84,24 @@
           />
           <label for="password">Password</label>
         </div>
-
         <button class="btn" id="submitSignIn">Sign In</button>
       </form>
 
       <div class="links">
-        <p>Don't have account yet?</p>
-        <button id="signUpButton">Login in</button>
+        <p>Don't have an account yet?</p>
+        <button id="signUpButton">Sign Up</button>
+      </div>
+
+      <div class="or">
+        <p>Or</p>
+      </div>
+
+      <div class="icons">
+        <i id="google-login-btn" class="fab fa-google"></i>
       </div>
     </div>
 
     <script type="module" src="agencyScript.js"></script>
-    <script type="module" src="agencyLogin.js"></script>
+    <script type="module" src="agencyLogin.html"></script>
   </body>
 </html>

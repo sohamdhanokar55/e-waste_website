@@ -1,111 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile Page</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-   
-      <div id="navbar">
-        <script>
-            fetch('../navbar.html')
-              .then(response => response.text())
-              .then(data => {
-                document.getElementById('navbar').innerHTML = data;
-              })
-              .catch(error => console.error('Error loading the navbar:', error));
-          </script>
-    </div>
-   
+<head>
+    <title>Fixed Dashboard Sidebar</title>
+    <link rel="stylesheet" href="agnecydashboard.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.0/dist/full.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Fixed Sidebar -->
+<div class="sidebar">
+    <ul>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">E-Tokens</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Logout</a></li>
+    </ul>
+</div>
+
+<!-- Main Content Area -->
+<div class="main-content">
+    <p class="dashboard-head">Profile</p>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="full-name">Name</label>
+        <input type="text" id="full-name" placeholder="Your Name" />
       </div>
-
-      <div class="container">
-        <div class="header">
-          <div>
-            <h1 id="user-name">Welcome,</h1>
-            <p>Tue, 07 June 2022</p>
-          </div>
-          <div class="search">
-            <div class="avatar"></div>
-          </div>
-        </div>
-
-        <a href="login.html" id="signOut-button">Sign Out</a>
-        <div class="card">
-          <div class="card-header">
-            <div>
-              <h2 id="display-name"></h2>
-              <p id="display-email"></p>
-            </div>
-            
-          </div>
-
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="full-name">Agency Name</label>
-              <input type="text" id="full-name" placeholder="Your Name" />
-            </div>
-            <div class="form-group">
-              <label for="nick-name">Contact</label>
-              <input type="text" id="contact" placeholder="Contact Number" />
-            </div>
-            <div class="form-group">
-              <label for="address">Loaction</label>
-              <input type="text" for="address" placeholder="Address">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="user-email" placeholder="Your Email" />
-            </div>
-            
-            
-          </div>
-
-          <div class="form-group">
-            <button class="save-button" id="save-button">Save</button>
-          </div>
-
-          <!-- Modal Popup -->
-          <div class="modal" id="scheduleModal">
-            <div class="modal-content">
-              <h3>Schedule Pickup</h3>
-              <div class="showDisposal"></div>
-              <label for="pickupOption">Choose an option:</label>
-              <select id="pickupOption">
-                <option value="pending">Pending</option>
-                <option value="schedule">Schedule</option>
-              </select>
-        
-              <div class="calendar" id="calendarSection">
-                <label for="pickupDate">Select a date:</label>
-                <input type="date" id="pickupDate" />
-              </div>
-              <button id="saveModalBtn">Save</button>
-              <button id="closeModalBtn">Close</button>
-            </div>
-          </div>
-        
-          <!-- Orders Section -->
-
-          <section class="orders">
-            
-            <div id="current-orders" ></div>
-            <h3>Order History</h3>
-            
-
-            <ul id="order-history" ></ul>
-
-            
-
-            <ul id="current-orders"></ul>
-
-
-          </section>
-        </div>
+      <div class="form-group">
+        <label for="nick-name">Contact</label>
+        <input type="text" id="contact" placeholder="Contact Number" />
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender">
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="user-email" placeholder="Your Email" />
       </div>
     </div>
-    <script type="module" src="agencydashboard.js"></script>
-  </body>
+    <div class="save-flex">
+      <div class="update-profile">
+        <button class="save-button" id="save-button">Save</button>
+      </div>
+    </div>
+    <div class="e-tokens">
+      <p class="dashboard-head">E-Tokens</p>
+
+      <!-- E-Wallet Section -->
+    <div class="bg-base-200 p-4 rounded-lg shadow-lg">
+      <h2 class="text-xl font-semibold mb-2">E-Wallet Balance</h2>
+      <p id="eWalletBalance" class="text-lg font-bold">Loading...</p>
+  </div>
+
+  <!-- Confirm & Redeem Buttons -->
+  <button id="confirmBtn" class="btn btn-primary mt-4">Confirm & Earn 400 E-Tokens</button>
+  <button id="redeemBtn" class="btn btn-secondary mt-4">Redeem 500 E-Tokens</button>
+
+  <!-- Modal Popup -->
+  <div id="modalPopup" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div class="bg-white p-6 rounded-lg shadow-lg relative">
+          <h2 class="text-lg font-semibold">🎉 You received 400 E-Tokens!</h2>
+      </div>
+  </div>
+
+  <!-- Leaderboard Section -->
+  <div class="mt-6">
+      <h2 class="text-xl font-semibold mb-2">Leaderboard</h2>
+      <div class="bg-base-200 p-4 rounded-lg shadow-lg" id="leaderboard">
+          <p>Loading...</p>
+      </div>
+  </div>
+
+  <!-- Progress & Badges Section -->
+  <div class="mt-6">
+      <h2 class="text-xl font-semibold mb-2">Progress</h2>
+      <div class="progress-container">
+          <div id="progressBar" class="progress-bar"></div>
+      </div>
+      <div id="badgesContainer" class="badges-container"></div>
+  </div>
+
+
+         
+  <script type="module" src="e-tokens.js"></script>
+
+    </div>
+</div>
+</body>
 </html>

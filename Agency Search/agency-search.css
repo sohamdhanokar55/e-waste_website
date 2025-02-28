@@ -7,7 +7,6 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
 .container {
     width: 90vw !important;
     max-width: 1200px !important;
@@ -92,3 +91,132 @@ body {
     margin-left:0;
     margin-right: 0;
 }
+/* modal pop up css starts here */
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+  
+  .modal {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 1000px;
+    max-width: 80%;
+  }
+  
+  .modal.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+  }
+  
+  .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    align-items: flex-end;
+  }
+  
+  .modal-body {
+    
+  }
+  
+  #overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+  }
+  
+  #overlay.active {
+    pointer-events: all;
+    opacity: 1;
+  }
+  /* modal body code starts */
+  .section-1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .agency-name>h3{
+    font-size: 45px;
+    margin:0;
+  }
+  .section-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    width: 100%;
+    height: 400px;
+    background-color: #fff;
+    max-width: 95%;
+    margin: 20px auto;
+  }
+  .Image-1-section{
+    width:100%;
+    height: 100%;
+    border: 1px solid black;
+  }
+  .img-container{
+    width:100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+  }
+  .Image-2-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    width:100%;
+    gap:10px;
+    height: 100%;
+  }
+  .img-heading{
+    color: white;
+    font-size: 40px;
+  }
+  .img-container>img{
+    width: 100%;
+    height: 100%;
+  }
+  .Image-3-section,.Image-4-section{
+    width: 100%;
+    height: 100%;
+  }
+  .mapping{
+    width: 100%;
+    height: 100%;
+  }
+  #map{
+    height: 100%;
+    width: 100%;
+  }
+  .description{
+    font-size:20px;
+
+  }

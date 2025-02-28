@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product-Listing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="product-listing.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <p class="title"></p>
+    
+    <div class="section-2">
+        <div class="Image-1-section">
+            <div class="img-container">
+                <img src="" alt="Product Image">
+            </div>
+        </div>
+        <div class="Image-2-section">
+            <div class="img-container"><img src="" alt="Product Image"></div>
+            <div class="img-container"><img src="" alt="Product Image"></div>
+            <div class="img-container"><img src="" alt="Product Image"></div>
+            <div class="img-container"><img src="" alt="Product Image"></div>
+        </div>
+    </div>
+
+    <div class="description-grid">
+        <div class="description">
+            <div class="short-details">
+                <p class="price"></p><br>
+                <p class="category"><b><i class="fa-solid fa-tags"></i> Category:</b> <span id="category"></span></p>
+            </div>
+            <div class="short-details">
+                <p class="category"><b><i class="fas fa-map-marker-alt"></i> District:</b> <span id="district"></span></p>
+                <p class="category"><b><i class="fab fa-whatsapp"></i> WhatsApp Number:</b> <span id="phone"></span></p>
+                <a class="seller-button">Request Buy</a>
+            </div>
+        </div>
+
+        <div class="main-details">
+            <p class="title-head"><b>Description:</b></p>
+            <p id="description"></p>
+        </div>
+    </div>
+
+    <script type = "module" src="product-listing.js"></script>
+</body>
+</html>

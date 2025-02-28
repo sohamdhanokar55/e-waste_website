@@ -1,0 +1,91 @@
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Notification Panel */
+#notificationPanel {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    display: none;
+    padding: 10px;
+}
+
+/* Notification Items */
+#notificationList {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Mobile: Adjust Order */
+@media (max-width: 768px) {
+    .flex {
+        flex-direction: column;
+        height: auto;
+    }
+
+    aside, main {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* 🔹 Correct Order */
+    .chat-section {
+        order: 1;
+    }
+
+    .notifications-section {
+        order: 2;
+    }
+
+    .groups-section {
+        order: 3;
+    }
+
+    .community-feed-section {
+        order: 4;
+        flex-grow: 1;
+        min-height: 80vh; /* Takes more space */
+        max-height: none; /* No forced scrolling */
+        overflow-y: visible;
+    }
+
+    /* Scroll only when there are many posts or images */
+    #feed:has(img), #feed:has(.post) {
+        max-height: 80vh; 
+        overflow-y: auto;
+    }
+}

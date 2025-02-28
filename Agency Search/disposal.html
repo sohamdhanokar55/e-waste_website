@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disposal</title>
+    <link rel="stylesheet" href="disposal.css">
+</head>
+<body>
+    <div class="section-1">
+        <div class="agency-name">
+           <h3 id="agencyName">Loading...</h3>
+        </div>
+    </div>
+    <div class="section-2">
+        <div class="Image-1-section">
+            <div class="img-container">
+                <img src="" placeholder="">
+            </div>
+        </div>
+        <div class="Image-2-section">
+            <div class="img-container"><img src=""></div>
+            <div class="img-container"><img src=""></div>
+            <div class="img-container"><img src=""></div>
+            <div class="img-container"><img src=""></div>
+        </div>
+        <div class="Image-3-section">
+            <div class="description">
+                <p><strong>State:</strong> <span id="stateName">Loading...</span></p>
+                <p><strong>Email:</strong> <span id="agencyEmail">Loading...</span></p>
+                <p><strong>Contact:</strong> <span id="agencyContact">Loading...</span></p>
+            </div>
+            <div>
+                <button class="select-btn">Place Disposal Request</button>
+            </div>
+        </div>
+        <div class="Image-4-section">
+            <div class="mapping">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+
+            document.getElementById('agencyName').textContent = params.get('firstName') || 'N/A';
+            document.getElementById('stateName').textContent = params.get('stateName') || 'N/A';
+            document.getElementById('agencyEmail').textContent = params.get('email') || 'N/A';
+            document.getElementById('agencyContact').textContent = params.get('contact') || 'N/A';
+        });
+    </script>
+    <script type="module" src="agency-search.js"></script>
+    <script type="module" src="maps.js"></script>
+</body>
+</html>
